@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "../../../assets/icon/Services/Heart/icon.svg";
-import MobileIcon from "../../../assets/icon/Services/Heart/mobileIcon.svg";
+import MobileIcon from "../../../assets/icon/Services/Heart/MobileIcon.svg";
 import Bg from "../../../assets/img/Bg/Heart.png";
 import MobileBg from "../../../assets/img/Bg/MobileHeart.png";
 
