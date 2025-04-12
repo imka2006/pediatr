@@ -94,6 +94,12 @@
         overflow: hidden;
         width: 100%;
 
+        &__babe {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
         &__bg {
             position: absolute;
             left: 0;
@@ -430,7 +436,7 @@
         }
     }
 
-    @media screen and (max-width: 530px) {
+    @media screen and (max-width: 600px) {
         &-right__bottom {
             margin-top: 20px;
         }
@@ -473,6 +479,21 @@
         }
         &-tabs {
             gap: 10px;
+        }
+        &-top {
+            &__title {
+                font-size: 18px;
+            }
+            &__text {
+                font-size: 15px;
+                margin-top: 14px;
+            }
+            &__info {
+                margin-top: 22px;
+            }
+        }
+        &-location__btn {
+            padding: 8px 10px; 
         }
 
         .swiper-button-prev:after,

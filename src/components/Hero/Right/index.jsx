@@ -12,7 +12,7 @@ function Right() {
                 ) : null}
 
                 <div className="hero-right__bottom">
-                    {window.innerWidth > 530 ? (
+                    {window.innerWidth > 600 ? (
                         <>
                             {/* {window.innerWidth >= 1295 && window.innerWidth >= 889 ? <Schedule /> : <></>} */}
                             {window.innerWidth < 889 ||

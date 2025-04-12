@@ -7,7 +7,7 @@ import Hero from './components/Hero'
 import Services from './components/Services'
 import Principles from './components/Principles'
 import Doc from './components/Doc'
-import Reviews from './components/Reviews/Index'
+import Reviews from './components/Reviews'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,7 +19,7 @@ function App() {
      <Services />
      <Principles />
      <Doc />
-     {/* <Reviews /> */}
+     <Reviews />
     </>
   )
 }

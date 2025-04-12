@@ -1,6 +1,7 @@
 import React from "react";
 import  Watsapp from "../../../assets/icon/Right/watsapp.svg"
 import Bg from "../../../assets/img/Bg/Hero.png"
+import Babe from "../../../assets/img/right/Top/Babe.png"
 
 function Top() {
     return (
@@ -13,6 +14,13 @@ function Top() {
                 <button className="hero-top__btn btn-active">Записаться</button>
                 <a href="#" target="_blank" rel="noopener noreferrer"><img src={Watsapp} alt="Watsapp" /></a>
             </div>
+            {
+                window.innerWidth > 600 ? (
+                    <img src={Babe} className="hero-top__babe" alt="babe" />
+                ) : (
+                    <></>
+                )
+            }
         </div>
         </>
     );
