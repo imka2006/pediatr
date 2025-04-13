@@ -98,7 +98,7 @@ function Principles() {
                             <Post img={First} text={firstText} link={"#"} />
                             <Post img={Second} text={secondText} link={"#"} />
                             {window.innerWidth >= 685 &&
-                            window.innerWidth <= 1115 ? (
+                            window.innerWidth < 1115 ? (
                                 <Post img={First} text={secondText} link="#" />
                             ) : null}
                             {/* {window.innerWidth >= 1115 &&
@@ -114,13 +114,12 @@ function Principles() {
                                 </>
                             )} */}
                         </div>
-                        <List items={list} title="Основные принципы работы" />
-                        
                         {window.innerWidth < 700 ? (
                             <List items={mobile} title="Стоимость услуг" />
                         ) : (
                             <></>
                         )}
+                        <List items={list} title="Основные принципы работы" />
                     </div>
                 </div>
             </div>

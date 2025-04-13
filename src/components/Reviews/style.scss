@@ -1,16 +1,19 @@
 .reviews {
     margin-top: 20px;
+    margin-bottom: 300px;
 
-    
     &-wrapper {
-        // display: grid;
-        // grid-gap: 20px;
-        // grid-template-columns: repeat(auto-fill, minmax(300px, 3fr));
-        // grid-row: 3;
-        // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
         display: flex;
         gap: 20px;
         flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+    &-btn {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        margin: 0 auto;
     }
 
     &-block {
@@ -19,12 +22,19 @@
         border-radius: 20px;
         width: 100%;
         box-sizing: border-box;
+        height: 288px;
 
         &.mid {
             max-width: 420px;
         }
         &.long {
             max-width: 530px;
+        }
+        &.lil {
+            max-width: 310px;
+        }
+        &.big {
+            max-width: 640px;
         }
 
         &__name {
@@ -50,13 +60,13 @@
         position: relative;
         overflow: hidden;
         height: 288px;
-    
+
         &__bg {
             position: absolute;
             bottom: 0;
             right: 0;
         }
-    
+
         &__title {
             font-weight: 700;
             font-size: 36px;
@@ -79,8 +89,42 @@
             gap: 10px;
         }
     }
-}
+    @media screen and (max-width: 1330px) {
+        &-wrapper {
+            display: unset;
+            gap: 0px;
+            flex-wrap: unset;
 
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        }
+        &-block {
+            height: unset;
+            &.mid {
+                max-width: unset;
+            }
+            &.long {
+                max-width: unset;
+            }
+            &.lil {
+                max-width: unset;
+            }
+            &.big {
+                max-width: unset;
+            }
+        }
+        &-main {
+            max-width: unset;
+        }
+    }
+    @media screen and (max-width: 415px) {
+        margin-bottom: 50px;
+        &-wrapper {
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+        }
+    }
+}
 
 // .reviews-section {
 //     padding: 20px;

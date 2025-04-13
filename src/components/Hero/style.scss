@@ -346,7 +346,7 @@
             position: absolute;
             z-index: 2;
             right: 25px;
-            bottom: 0;
+            bottom: 45px;
 
             li::marker {
                 content: "";
@@ -368,6 +368,7 @@
             }
         }
         &-location {
+            width: unset;
             &__map {
                 height: 390px;
             }
@@ -471,8 +472,11 @@
                 font-size: 14px;
             }
             &__list {
-                right: -7px;
-                bottom: -14px;
+                right: 12px;
+                bottom: 65px;
+            }
+            .hero-swiper__inst, .hero-swiper__item {
+                gap: 4px;
             }
         }
         &-left {
