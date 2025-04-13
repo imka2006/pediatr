@@ -455,25 +455,28 @@
         &-swiper {
             width: 290px;
             &__photo {
-                max-width: 200px;
+                max-width: 220px;
                 margin: 0 auto;
                 display: flex;
             }
             &__info {
-                width: 200px;
+                width: 220px;
                 box-sizing: border-box;
                 top: 245px;
                 font-size: 13px !important;
             }
             &__text {
-                margin-top: 100px;
+                margin-top: 70px;
             }
             &__name {
                 font-size: 14px;
             }
             &__list {
-                right: 12px;
+                right: -10px;
                 bottom: 65px;
+                img {
+                    max-width: 80%;
+                }
             }
             .hero-swiper__inst, .hero-swiper__item {
                 gap: 4px;
@@ -507,6 +510,14 @@
         .swiper-rtl .swiper-button-prev:after {
             font-size: 25px;
             bottom: 80px;
+        }
+        .swiper-button-prev:after,
+        .swiper-rtl .swiper-button-next:after {
+            left: 0;
+        }
+        .swiper-button-next:after,
+        .swiper-rtl .swiper-button-prev:after {
+           right: 0;
         }
     }
 }
