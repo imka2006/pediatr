@@ -23,9 +23,7 @@ function Location() {
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d668.1484455747492!2d74.60349401505306!3d42.8821579090188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec9ab4e047231%3A0xb06cfaa483963836!2z0JzQsNC80LAg0JTQvtC60YLQvtGALCDQtNC10YLRgdC60LjQuSDQvNC10LTQuNGG0LjQvdGB0LrQuNC5INGG0LXQvdGC0YAsINC_0LXQtNC40LDRgtGA!5e0!3m2!1sru!2skg!4v1744386732556!5m2!1sru!2skg"
                     className="hero-location__map"
-                    allowfullscreen=""
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
                 ></iframe>
 
                 <h4 className="hero-location__name">

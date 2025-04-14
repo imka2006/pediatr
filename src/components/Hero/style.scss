@@ -149,22 +149,26 @@
         background: white;
         max-width: 216px;
         text-align: center;
-        padding: 0 20px 17px;
         box-sizing: border-box;
         border-radius: 20px;
         width: 100%;
+        overflow: hidden;
+
+        &__wrapper {
+            padding: 0 20px 17px;
+            margin-top: 10px;
+        }
 
         &__title {
             font-weight: 700;
             font-size: 20px;
             color: #333333;
             background: #f8fbff;
-            padding: 15px 0;
+            padding: 15px 20px;
+            text-align: left;
         }
         &__status {
-            border: 1px solid #06d6a0;
             border-radius: 24px;
-            color: #06d6a0;
             font-weight: 700;
             font-size: 13px;
             display: flex;
@@ -172,13 +176,28 @@
             gap: 10px;
             padding: 11px 26px;
             margin-bottom: 10px;
+            span {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+
+            &.active {
+                border: 1px solid #06d6a0;
+                color: #06d6a0;
+                span {
+                    background: #06d6a0;
+                }
+            }
+            &.close {
+                border: 1px solid #ff6e70;
+                color: #ff6e70;
+                span {
+                    background: #ff6e70;
+                }
+            }
         }
-        &__dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #06d6a0;
-        }
+
         &__note {
             font-size: 16px;
             text-align: left;
@@ -235,6 +254,11 @@
             font-size: 32px;
             color: #1b8bac;
             line-height: 0;
+            &.hours {
+                color: black;
+                font-weight: 500;
+                font-size: 18px;
+            }
         }
 
         &__bigtime {
@@ -478,7 +502,8 @@
                     max-width: 80%;
                 }
             }
-            .hero-swiper__inst, .hero-swiper__item {
+            .hero-swiper__inst,
+            .hero-swiper__item {
                 gap: 4px;
             }
         }
@@ -501,7 +526,7 @@
             }
         }
         &-location__btn {
-            padding: 8px 10px; 
+            padding: 8px 10px;
         }
 
         .swiper-button-prev:after,
@@ -517,7 +542,7 @@
         }
         .swiper-button-next:after,
         .swiper-rtl .swiper-button-prev:after {
-           right: 0;
+            right: 0;
         }
     }
 }

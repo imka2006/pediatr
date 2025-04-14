@@ -3,9 +3,13 @@
     margin-bottom: 300px;
 
     &-wrapper {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
+        // display: flex;
+        // gap: 20px;
+        // flex-wrap: wrap;
+        
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
         margin-bottom: 40px;
     }
     &-btn {
@@ -24,6 +28,10 @@
         box-sizing: border-box;
         height: 288px;
 
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
         &.mid {
             max-width: 420px;
         }
@@ -40,7 +48,6 @@
         &__name {
             font-weight: 700;
             font-size: 16px;
-            margin-bottom: 6px;
         }
 
         &__date {
@@ -53,10 +60,21 @@
             font-size: 16px;
             font-weight: 400;
             line-height: 150%;
+            margin: 6px 0;
+        }
+        &__link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 400;
+            font-size: 16px;
+            color: #1B8BAC;
+            width: fit-content;
+            margin-top: auto;
         }
     }
     &-main {
-        max-width: 310px;
+        
         position: relative;
         overflow: hidden;
         height: 288px;
