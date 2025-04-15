@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/icon/Header/Logo.svg";
+import logo from "../../assets/icon/Header/logo.svg";
 import "./style.scss";
 
 // Функция для получения текущего времени в часовом поясе Кыргызстана (Asia/Bishkek)
@@ -61,7 +61,7 @@ function Index() {
       <header className="header">
         <div className="container">
           <div className="header-wrapper">
-            <img className="header-logo" src={Logo} alt="logo" />
+            <img className="header-logo" src={logo} alt="logo" />
             {window.innerWidth >= 700 ? (
               <ul className="header-list">
                 <li className="header-item">

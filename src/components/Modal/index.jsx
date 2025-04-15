@@ -9,7 +9,7 @@ function Modal() {
         <div className="modal">
             <div className="modal-bg"></div>
             <div className="modal-wrapper">
-                <Record />
+                {/* <Record /> */}
                 {/* <Calendar /> */}
             </div>
         </div>

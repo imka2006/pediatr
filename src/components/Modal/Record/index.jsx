@@ -2,7 +2,7 @@ import React from "react";
 import Arrow from "../../../assets/icon/Modal/Arrow.svg";
 import Close from "../../../assets/icon/Modal/Close.svg";
 import Whatsapp from "../../../assets/icon/Right/Whatsapp.svg";
-import Logo from "../../../assets/icon/Header/Logo.svg";
+import logo from "../../../assets/icon/Header/logo.svg";
 import Bg from "../../../assets/img/Bg/modal.png";
 
 function Record() {
@@ -61,7 +61,7 @@ function Record() {
                 >
                     <img src={Whatsapp} alt="Whatsapp" />
                 </a>
-                <img src={Logo} alt="logo" />
+                <img src={logo} alt="logo" />
                 <img src={Bg} className="modal-record__bg" alt="" />
             </div>
         </div>
