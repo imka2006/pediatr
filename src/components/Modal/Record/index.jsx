@@ -3,7 +3,7 @@ import Arrow from "../../../assets/icon/Modal/Arrow.svg";
 import Close from "../../../assets/icon/Modal/Close.svg";
 import Whatsapp from "../../../assets/icon/Right/Whatsapp.svg";
 import logo from "../../../assets/icon/Header/logo.svg";
-import Bg from "../../../assets/img/Bg/modal.png";
+import Bg from "../../../assets/img/Bg/Modal.png";
 
 function Record() {
     return (
