@@ -21,7 +21,7 @@ function App() {
      <Principles />
      <Doc />
      <Reviews />
-     <Modal />
+     {/* <Modal /> */}
     </>
   )
 }

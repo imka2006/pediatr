@@ -1,0 +1,105 @@
+.calendar {
+    &-container {
+        width: 596px;
+        // width: 100%;
+    }
+
+    &-wrapper {
+        display: flex;
+        gap: 50px;
+        border: 1px solid #249dc0;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+
+    &-left {
+        /* Левая часть с календарём */
+    }
+
+    &-table {
+        border-collapse: collapse;
+    }
+
+    &-thead,
+    &-tbody,
+    &-tr {
+        /* Можно добавить какие-то общие стили при необходимости */
+        width: 36px;
+        height: 36px;
+    }
+
+    &-th,
+    &-td {
+        min-width: 34px;
+        max-width: 34px;
+        height: 34px;
+        text-align: center;
+        user-select: none;
+        cursor: pointer;
+        color: #000000;
+        font-weight: 600;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+    &-th,
+    &-td.wasted {
+        cursor: unset;
+    }
+    &-td.wasted {
+        color: #d1d7e1;
+    }
+    &-td.active {
+        background: #dae9ff;
+    }
+    &-td.sunday {
+        color: #ff6e70;
+    }
+
+    &-emptyCell {
+        color: #ccc;
+        cursor: unset;
+    }
+
+    &-hoursBlock {
+        width: 100%;
+        position: relative;
+    }
+
+    &-hoursBlockTitle {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    &-hoursEmpty {
+        color: #777;
+    }
+
+    &-hoursList {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    }
+    &-item {
+        width: 56px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        cursor: pointer;
+        &.busy {
+            color: #d1d7e1;
+        }
+        &.free {
+            background: #dae9ff;
+        }
+        &.day-off {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25px;
+        }
+    }
+}

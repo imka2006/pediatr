@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Cart from "./Cart";
 import TwoGis from "./TwoGis";
 
-import Arrow from "../../assets/icon/Reviews/Arrow.svg";
 import "./style.scss";
 
 const ORG_ID = "70000001051350763";
@@ -53,6 +52,7 @@ function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [visibleCount, setVisibleCount] = useState(8);
   const [loading, setLoading] = useState(true);
+  const observerRef = useRef(null);
 
   useEffect(() => {
     fetchFiveStarReviews()
@@ -66,12 +66,29 @@ function Reviews() {
       });
   }, []);
 
-  const handleShowMore = () => {
-    setVisibleCount((prev) => prev + 3);
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            setVisibleCount((prev) => {
+              const nextCount = prev + 3;
+              return nextCount <= reviews.length ? nextCount : prev;
+            });
+          }, 150); // чуть-чуть задержки
+        }
+      },
+      { threshold: 1.0 }
+    );
+  
+    if (observerRef.current) observer.observe(observerRef.current);
+  
+    return () => {
+      if (observerRef.current) observer.unobserve(observerRef.current);
+    };
+  }, [reviews, visibleCount]);  
 
   const visibleReviews = reviews.slice(0, visibleCount);
-  
 
   return (
     <div className="reviews">
@@ -83,12 +100,10 @@ function Reviews() {
           ) : (
             visibleReviews.map((item) => <Cart key={item.id} item={item} />)
           )}
+
+          {/* 👇 Невидимый триггер внизу списка */}
+          <div ref={observerRef} style={{ height: 1, minHeight: "10px" }}></div>
         </div>
-        {!loading && visibleCount < reviews.length && (
-          <button className="reviews-btn" onClick={handleShowMore}>
-            Загрузить еще <img src={Arrow} alt="arrow" />
-          </button>
-        )}
       </div>
     </div>
   );

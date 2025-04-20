@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -13,6 +13,7 @@ import Whatsapp from "../../../assets/icon/Left/Slider/Whatsapp.svg";
 import Call from "../../../assets/icon/Left/Slider/Call.svg";
 
 function Slider({ selectedTab }) {
+    const swiperRef = useRef(null);
     // Массивы отделяем по категориям
     const pediarts = [
         {
@@ -89,18 +90,17 @@ function Slider({ selectedTab }) {
 
     // В зависимости от того, что выбрал пользователь, берём нужный массив
     let currentData = [];
-    if (selectedTab === "Педиатр") {
-        currentData = pediarts;
-    } else if (selectedTab === "Детский невролог") {
-        currentData = childNeurologist;
-    } else if (selectedTab === "Детский уролог") {
-        currentData = childUrologist;
-    } else if (selectedTab === "Неонатолог") {
-        currentData = neonatologist;
-    } else {
-        // Если ничего не выбрано или по умолчанию, можно показывать, например, "Педиатр"
-        currentData = pediarts;
-    }
+    if (selectedTab === "Педиатр") currentData = pediarts;
+    else if (selectedTab === "Детский невролог") currentData = childNeurologist;
+    else if (selectedTab === "Детский уролог") currentData = childUrologist;
+    else if (selectedTab === "Неонатолог") currentData = neonatologist;
+    else currentData = pediarts;
+
+    useEffect(() => {
+        if (swiperRef.current?.swiper) {
+          swiperRef.current.swiper.slideTo(0); // сбрасываем на 1 слайд
+        }
+      }, [selectedTab]);
 
     return (
         <div className="hero-swiper">
@@ -118,19 +118,21 @@ function Slider({ selectedTab }) {
                     </li>
                     <li>
                         <a href="#" target="_blank">
-                            <img src={Call} alt="Call" /> 
+                            <img src={Call} alt="Call" />
                         </a>
                     </li>
                 </div>
             )}
             <Swiper
+                ref={swiperRef}
+                slidesPerView={1}
                 pagination={true}
                 navigation={true}
                 modules={[Pagination, Navigation]}
                 className="hero-slider"
             >
                 {currentData.map((item) => (
-                    <SwiperSlide key={item.id}>
+                    <SwiperSlide key={item.id} >
                         <div className="hero-swiper__block">
                             <img
                                 src={Aygerim}

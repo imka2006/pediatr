@@ -1,8 +1,12 @@
 import React from 'react'
+import Icon from "../../../assets/icon/Modal/Final.svg"
+import "./style.scss"
 
 function Final() {
   return (
-    <div>Final</div>
+    <div className='final'>
+        <img src={Icon} alt="icon" />
+    </div>
   )
 }
 

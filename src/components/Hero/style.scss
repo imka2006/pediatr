@@ -229,6 +229,9 @@
                     border-radius: 50%;
                 }
             }
+            &.sunday .hero-schedule__day {
+                color: #000;
+            }
         }
         &__separator {
             width: 8px;
@@ -466,12 +469,24 @@
         &-right__bottom {
             margin-top: 20px;
         }
-        &-schedule__title {
-            background: unset;
-            padding: 0;
+        &-schedule {
+            &__title {
+                background: unset;
+                padding: 0;
+                margin-bottom: 20px;
+            }
+            &__note {
+                margin-bottom: 32px;
+            }
+            &__bigtime {
+                left: 150px;
+            }
+            &__day {
+                width: 110px;
+            }
         }
-        &-schedule__note {
-            margin-bottom: 32px;
+        &-location__title {
+            margin-bottom: 12px;
         }
     }
 
@@ -563,7 +578,16 @@
 .swiper-rtl .swiper-button-next:after,
 .swiper-button-next:after,
 .swiper-rtl .swiper-button-prev:after {
+    content:"";
+    background: url("../../assets/icon/Left/Slider/Next.svg");
+    width: 30px;
+    height: 60px;
     color: #8da2a8;
     position: absolute;
     bottom: 40px;
+}
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+    background: url("../../assets/icon/Left/Slider/Prev.svg");
+
 }
