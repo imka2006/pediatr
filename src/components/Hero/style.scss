@@ -99,6 +99,7 @@
             position: absolute;
             bottom: 10px;
             right: 10px;
+            z-index:-1;
         }
 
         &__bg {
@@ -462,6 +463,9 @@
         }
         &-schedule {
             max-width: 217px;
+        }
+        &-top__text {
+            max-width:450px;
         }
     }
 

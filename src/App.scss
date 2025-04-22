@@ -8,7 +8,7 @@ body {
 .container {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 20px;
 }
 
 a {
@@ -46,8 +46,3 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-@media screen and (max-width: 700px) {
-    .container {
-        padding: 0 10px;
-    }
-}

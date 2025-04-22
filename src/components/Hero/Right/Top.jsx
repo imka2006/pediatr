@@ -25,7 +25,7 @@ function Top() {
                         <img src={Whatsapp} alt="Whatsapp" />
                     </a>
                 </div>
-                {window.innerWidth > 600 ? (
+                {window.innerWidth > 700 ? (
                     <img src={Babe} className="hero-top__babe" alt="babe" />
                 ) : (
                     <></>

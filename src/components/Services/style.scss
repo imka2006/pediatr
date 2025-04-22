@@ -193,6 +193,14 @@
             gap: 5px;
             padding: 0;
         }
+        &-sub__list {
+            max-width: 206px;
+        }
+    }
+    @media screen and (max-width: 1115px) {
+        &-sub__list {
+            max-width:unset;
+        }
     }
     @media screen and (max-width: 1115px) {
         &-content {
