@@ -17,6 +17,8 @@ const FIRST_PARAMS = {
   fields: "meta.org_rating,meta.org_reviews_count",
 };
 
+const widthList = ["lil", "mid", "long", "mid", "mid", "mid", "lil", "big", "lil"];
+
 async function fetchFiveStarReviews() {
   const reviews5 = [];
   let url = REVIEWS_URL;
@@ -50,7 +52,8 @@ async function fetchFiveStarReviews() {
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [batches, setBatches] = useState([]); // список отображаемых отзывов
+  const [batchIndex, setBatchIndex] = useState(0); // индекс партии
   const [loading, setLoading] = useState(true);
   const observerRef = useRef(null);
 
@@ -58,6 +61,8 @@ function Reviews() {
     fetchFiveStarReviews()
       .then((data) => {
         setReviews(data);
+        const initialBatch = getBatch(data, 0);
+        setBatches(initialBatch);
         setLoading(false);
       })
       .catch((err) => {
@@ -69,26 +74,55 @@ function Reviews() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            setVisibleCount((prev) => {
-              const nextCount = prev + 3;
-              return nextCount <= reviews.length ? nextCount : prev;
-            });
-          }, 150); // чуть-чуть задержки
+        if (entry.isIntersecting && !loading) {
+          const nextIndex = batchIndex + 1;
+          const nextBatch = getBatch(reviews, nextIndex);
+
+          if (nextBatch.length > 0) {
+            setBatches((prev) => [...prev, ...nextBatch]);
+            setBatchIndex(nextIndex);
+          }
         }
       },
       { threshold: 1.0 }
     );
-  
+
     if (observerRef.current) observer.observe(observerRef.current);
-  
+
     return () => {
       if (observerRef.current) observer.unobserve(observerRef.current);
     };
-  }, [reviews, visibleCount]);  
+  }, [batchIndex, reviews, loading]);
 
-  const visibleReviews = reviews.slice(0, visibleCount);
+// 👇 корректная функция getBatch
+const getBatch = (data, index) => {
+  const result = [];
+
+  if (index === 0) {
+    // Первая партия: 8 элементов начиная с width[1]
+    for (let i = 0; i < 8 && i < data.length; i++) {
+      result.push({
+        ...data[i],
+        width: widthList[i + 1] || "310", // width[1] до width[8]
+      });
+    }
+  } else {
+    // Остальные партии: по 9 штук
+    const start = 8 + (index - 1) * 9;
+    const end = start + 9;
+
+    for (let i = start; i < end && i < data.length; i++) {
+      const widthIndex = i + 1; // чтобы продолжать после width[8]
+      result.push({
+        ...data[i],
+        width: widthList[widthIndex % widthList.length] || "310",
+      });
+    }
+  }
+
+  return result;
+};
+
 
   return (
     <div className="reviews">
@@ -98,10 +132,10 @@ function Reviews() {
           {loading ? (
             <p>Загрузка отзывов...</p>
           ) : (
-            visibleReviews.map((item) => <Cart key={item.id} item={item} />)
+            batches.map((item) => (
+              <Cart key={item.id} item={item} wid={item.width} />
+            ))
           )}
-
-          {/* 👇 Невидимый триггер внизу списка */}
           <div ref={observerRef} style={{ height: 1, minHeight: "10px" }}></div>
         </div>
       </div>

@@ -104,7 +104,7 @@ function Slider({ selectedTab }) {
 
     return (
         <div className="hero-swiper">
-            {window.innerWidth <= 700 && (
+            {/* {window.innerWidth <= 700 && (
                 <div className="hero-swiper__list">
                     <li>
                         <a href="#" target="_blank">
@@ -122,7 +122,7 @@ function Slider({ selectedTab }) {
                         </a>
                     </li>
                 </div>
-            )}
+            )} */}
             <Swiper
                 ref={swiperRef}
                 slidesPerView={1}

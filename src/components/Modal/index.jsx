@@ -1,22 +1,39 @@
-import React from 'react'
-import Record from './Record'
-import "./style.scss"
-import Calendar from './Calendar'
-import Final from './Final'
+import React, { useState } from "react";
 
-function Modal() {
-  return (
-    <>
-        <div className="modal">
-            <div className="modal-bg"></div>
-            <div className="modal-wrapper">
-                {/* <Record /> */}
-                {/* <Calendar /> */}
-                <Final />
+import Record from "./Record";
+import Calendar from "./Calendar";
+import Final from "./Final";
+
+import "./style.scss";
+
+function Modal({ setModal }) {
+    const [calendar, setCalendar] = useState(false);
+    const [finishDate, setFinishDate] = useState(null);
+
+    const onClose = () => {
+        if (calendar) setCalendar(false);
+        if (!calendar) setModal(false);
+    };
+
+    return (
+        <>
+            <div className="modal">
+                <div onClick={() => onClose()} className="modal-bg"></div>
+                <div className="modal-wrapper">
+                    {calendar ? (
+                        <Calendar setFinishDate={setFinishDate} setCalendar={setCalendar}/>
+                    ) : (
+                        <Record
+                            setModal={setModal}
+                            finishDate={finishDate}
+                            setCalendar={setCalendar}
+                        />
+                    )}
+                    {/* <Final /> */}
+                </div>
             </div>
-        </div>
-    </>
-  )
+        </>
+    );
 }
 
-export default Modal
+export default Modal;

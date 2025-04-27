@@ -6,6 +6,7 @@
     border-radius: 20px;
     box-sizing: border-box;
     max-height: fit-content;
+    box-shadow: 0 4px 12px rgba(49, 69, 255, 0.13);
 
     &.another {
         max-height: unset;

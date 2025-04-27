@@ -1,5 +1,6 @@
 .hero {
     margin-bottom: 20px;
+    margin-top: 125px;
 
     &-wrapper {
         display: flex;
@@ -29,6 +30,7 @@
         border-radius: 20px;
         min-width: 216px;
         width: 100%;
+        box-shadow: 0 4px 12px rgba(49, 69, 255, 0.13);
 
         &__map {
             border: none;
@@ -81,6 +83,10 @@
             border-radius: 24px;
             padding: 8px 20px;
             cursor: pointer;
+            transition: .3s;
+            &:hover {
+                background: #1CB2DE;
+            }
         }
     }
 
@@ -94,12 +100,13 @@
         z-index: 1;
         overflow: hidden;
         width: 100%;
+        box-shadow: 0 4px 12px rgba(49, 69, 255, 0.13);
 
         &__babe {
             position: absolute;
             bottom: 10px;
             right: 10px;
-            z-index:-1;
+            z-index: -1;
         }
 
         &__bg {
@@ -143,6 +150,10 @@
             background: #1b8bac;
             line-height: 100%;
             cursor: pointer;
+            transition: .3s;
+            &:hover {
+                background: #3FAECF;
+            }
         }
     }
 
@@ -154,6 +165,7 @@
         border-radius: 20px;
         width: 100%;
         overflow: hidden;
+        box-shadow: 0 4px 12px rgba(49, 69, 255, 0.13);
 
         &__wrapper {
             padding: 0 20px 17px;
@@ -181,6 +193,19 @@
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
+                transition: 1s;
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(0.5);
+                }
+                100% {
+                    transform: scale(1);
+                }
             }
 
             &.active {
@@ -284,6 +309,7 @@
             text-align: center;
             margin: 0 auto;
             cursor: pointer;
+            max-width: 100px;
         }
 
         &__name {
@@ -297,6 +323,7 @@
             padding: 3px;
             border: 2px solid #eff3fe;
             border-radius: 50%;
+            border: 2px solid #fff;
             &.active {
                 border: 2px solid #1b8bac;
             }
@@ -441,12 +468,16 @@
         }
     }
     @media screen and (max-width: 888px) {
+        &-tabs {
+            flex-direction: column;
+        }
         &-wrapper {
             flex-direction: column;
             gap: 20px;
         }
         &-left {
             margin: 0 auto;
+            flex-direction: unset;
         }
         &-right__bottom {
             flex-direction: unset;
@@ -465,11 +496,20 @@
             max-width: 217px;
         }
         &-top__text {
-            max-width:450px;
+            max-width: 450px;
         }
     }
 
+    @media screen and (max-width: 700px) {
+        margin-top: 80px;
+    }
     @media screen and (max-width: 600px) {
+        &-tabs {
+            flex-direction: unset;
+        }
+        &-left {
+            flex-direction: column;
+        }
         &-right__bottom {
             margin-top: 20px;
         }
@@ -494,22 +534,22 @@
         }
     }
 
-    @media screen and (max-width: 470px) {
+    @media screen and (max-width: 490px) {
         &-swiper {
-            width: 290px;
+            width: 320px;
             &__photo {
-                max-width: 220px;
+                max-width: 250px;
                 margin: 0 auto;
                 display: flex;
             }
             &__info {
-                width: 220px;
+                width: 250px;
                 box-sizing: border-box;
-                top: 245px;
+                top: 290px;
                 font-size: 13px !important;
             }
             &__text {
-                margin-top: 70px;
+                margin-top: 80px;
             }
             &__name {
                 font-size: 14px;
@@ -553,15 +593,45 @@
         .swiper-button-next:after,
         .swiper-rtl .swiper-button-prev:after {
             font-size: 25px;
-            bottom: 80px;
+            bottom: 25px;
         }
         .swiper-button-prev:after,
         .swiper-rtl .swiper-button-next:after {
-            left: 0;
+            left: -15px;
         }
         .swiper-button-next:after,
         .swiper-rtl .swiper-button-prev:after {
-            right: 0;
+            right: -15px;
+        }
+    }
+    @media screen and (max-width: 360px) {
+        &-schedule__hours {
+            font-size: 26px;
+        }
+        &-swiper {
+            width: 280px;
+            &__photo {
+                max-width: 220px;
+            }
+            &__info {
+                width: 220px;
+                top: 260px;
+            }
+        }
+        .swiper-button-prev:after,
+        .swiper-rtl .swiper-button-next:after,
+        .swiper-button-next:after,
+        .swiper-rtl .swiper-button-prev:after {
+            font-size: 25px;
+            bottom: 25px;
+        }
+        .swiper-button-prev:after,
+        .swiper-rtl .swiper-button-next:after {
+            left: -15px;
+        }
+        .swiper-button-next:after,
+        .swiper-rtl .swiper-button-prev:after {
+            right: -15px;
         }
     }
 }
@@ -582,7 +652,7 @@
 .swiper-rtl .swiper-button-next:after,
 .swiper-button-next:after,
 .swiper-rtl .swiper-button-prev:after {
-    content:"";
+    content: "";
     background: url("../../assets/icon/Left/Slider/Next.svg");
     width: 30px;
     height: 60px;
@@ -593,5 +663,4 @@
 .swiper-button-prev:after,
 .swiper-rtl .swiper-button-next:after {
     background: url("../../assets/icon/Left/Slider/Prev.svg");
-
 }

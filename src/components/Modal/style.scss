@@ -44,6 +44,31 @@
             margin-bottom: 20px;
         }
 
+        &__list {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-weight: 400;
+            font-size: 15px;
+            color: #313131;
+            padding: 20px;
+            box-sizing: border-box;
+            max-width: 288px;
+            width: 100%;
+            border: 1px solid #249DC0;
+            background: #fff;
+            border-radius: 20px;
+            z-index: 1;
+            left: 0;
+            top: 45px;
+            cursor: default;
+            li {
+                max-width: fit-content;
+                cursor: pointer;
+            }
+        }
+
         &__wrapper {
             display: flex;
             align-items: center;
@@ -66,9 +91,15 @@
             overflow: hidden;
             padding: 0 20px;
 
+            &.another {
+                position: relative;
+                overflow: unset;
+            }
+
             &.acardeon {
                 justify-content: space-between;
                 cursor: pointer;
+                position: relative;
                 img {
                     transition: .3s;
                 }

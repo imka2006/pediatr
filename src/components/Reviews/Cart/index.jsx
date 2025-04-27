@@ -1,53 +1,69 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import LilStar from "../../../assets/icon/Reviews/LilStar.svg";
 import Arrow from "../../../assets/icon/Reviews/Arrow.svg";
 
-function Cart({ item }) {
+function Cart({ item, wid }) {
   const [showFullText, setShowFullText] = useState(false);
+  const [displayText, setDisplayText] = useState(item.text);
+  const textRef = useRef(null);
 
-  const isLongText = item.text.split(" ").length > 25;
-
-  // Обрезаем текст
-  const truncateText = (text, maxWords = 25) => {
-    const words = text.split(" ");
-    if (words.length <= maxWords) return text;
-    return words.slice(0, maxWords).join(" ") + "...";
-  };
-
-  // Форматируем дату
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("ru-RU", {
+  const formatDate = (dateString) =>
+    new Date(dateString).toLocaleDateString("ru-RU", {
       day: "numeric",
       month: "long",
       year: "numeric",
     });
-  };
+
+  const isLongText = item.text.split(" ").length > 5;
+
+  useEffect(() => {
+    if (showFullText || !isLongText) {
+      setDisplayText(item.text);
+      return;
+    }
+
+    const element = textRef.current;
+    const originalText = item.text;
+    let truncatedText = originalText;
+    element.textContent = truncatedText;
+
+    // Проверяем, превышает ли высота элемента 80px
+    while (element.scrollHeight > 80 && truncatedText.length > 0) {
+      truncatedText = truncatedText.slice(0, -1); // Убираем по одному символу
+      element.textContent = truncatedText + "...";
+    }
+
+    setDisplayText(truncatedText + "...");
+  }, [showFullText, item.text, isLongText]);
 
   return (
-    <div className="reviews-block">
+    <div className={`reviews-block ${wid}`}>
       <h4 className="reviews-block__name">{item.user_name || "Аноним"}</h4>
       <div className="reviews-block__star">
-        {Array.from({ length: item.rating }, (_, index) => (
-          <img key={index} src={LilStar} alt="star" />
-        ))}
+        {Array(item.rating)
+          .fill()
+          .map((_, index) => (
+            <img key={index} src={LilStar} alt="star" />
+          ))}
       </div>
       <div className="reviews-block__date">{formatDate(item.date_created)}</div>
-      <div className="reviews-block__text">
-        {truncateText(item.text)}
+      <div
+        className="reviews-block__text"
+        ref={textRef}
+        style={{
+          maxHeight: "70px",
+          overflow: "hidden",
+        }}
+      >
+        {displayText}
       </div>
-      {isLongText && (
-        <a
-          href="https://2gis.kg/bishkek/firm/70000001051350764/tab/reviews?m=74.60307%2C42.882236%2F17.8&immersive=on"
-          target="_blank"
+      {isLongText && !showFullText && (
+        <button
           className="reviews-block__link"
-          onClick={(e) => {
-            e.preventDefault();
-            setShowFullText(true);
-          }}
+          // onClick={() => setShowFullText(true)}
         >
           Читать полностью <img src={Arrow} alt="arrow" />
-        </a>
+        </button>
       )}
     </div>
   );

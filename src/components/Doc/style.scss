@@ -20,6 +20,7 @@
         box-sizing: border-box;
         background: #fff;
         border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(49, 69, 255, 0.13);
 
         &__content {
             max-width: 241px;
@@ -44,7 +45,6 @@
     }
 
     &-tools {
-        // max-width: 640px;
         width: 100%;
         padding: 20px;
         box-sizing: border-box;
@@ -52,6 +52,7 @@
         border-radius: 20px;
         display: flex;
         flex-direction: column;
+        box-shadow: 0 4px 12px rgba(49, 69, 255, 0.13);
 
         &__wrapper {
             display: flex;

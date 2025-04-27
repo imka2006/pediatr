@@ -1,5 +1,11 @@
 .header {
     padding: 20px 0 26px;
+    background: rgba(239, 243, 254, 1);
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    top: 0;
+    box-shadow: 0 4px 12px rgb(49, 69, 255, 0.13);
 
     &-wrapper {
         display: flex;
@@ -26,12 +32,28 @@
         padding: 4px 14px;
         max-width: 166px;
         box-sizing: border-box;
+        transition: 1s;
 
         div {
             min-width: 12px;
             height: 12px;
             border-radius: 50%;
+            transition: 1s;
+            animation: pulse 2s infinite;
         }
+        
+
+        @keyframes pulse {
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(0.5);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
 
         &.active {
             border: 1px solid #06d6a0;
@@ -65,6 +87,8 @@
         }
     }
     @media screen and (max-width: 700px) {
+        padding: 10px 0;
+        
         &-logo {
             max-width: 117px;
         }

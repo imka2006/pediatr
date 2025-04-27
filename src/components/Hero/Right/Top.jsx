@@ -4,7 +4,7 @@ import Bg from "../../../assets/img/Bg/Hero.png";
 import Babe from "../../../assets/img/right/Top/Babe.png";
 import Modal from "../../Modal";
 
-function Top() {
+function Top({setModal}) {
     return (
         <>
             <div className="hero-top">
@@ -18,7 +18,7 @@ function Top() {
                     подход к ЗДОРОВЬЮ ребенка.
                 </p>
                 <div className="hero-top__info">
-                    <button className="hero-top__btn btn-active">
+                    <button onClick={() => setModal(true)} className="hero-top__btn btn-active">
                         Записаться
                     </button>
                     <a href="#" target="_blank" rel="noopener noreferrer">
@@ -31,7 +31,6 @@ function Top() {
                     <></>
                 )}
             </div>
-            {/* <Modal /> */}
         </>
     );
 }

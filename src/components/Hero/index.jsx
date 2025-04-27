@@ -4,24 +4,18 @@ import "./style.scss";
 import Right from "./Right";
 import Top from "./Right/Top";
 import Schedule from "./Right/Schedule";
-function Hero() {
+function Hero({setModal}) {
     return (
         <>
             <div className="hero">
                 <div className="container">
                     <div className="hero-wrapper">
                         <Left />
-                        <Right />
+                        <Right setModal={setModal} />
                     </div>
-                    {/* {window.innerWidth < 889 || window.innerWidth > 1295 ? (
-                        <Schedule />
-                    ) : (
-                        <></>
-                    )} */}
                     {window.innerWidth >= 530 && window.innerWidth <= 1295 ? (
                         <div className="hero-see">
-                            
-                            <Top />
+                            <Top setModal={setModal} />
                             {window.innerWidth >= 889 ? (
                                 <Schedule />
                             ) : (
