@@ -1,19 +1,25 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
+
+import Aygerim from "../../../../assets/img/left/Slider/aygerim.png";
+import Inst from "../../../../assets/icon/Left/Slider/inst.svg";
+import Commas from "../../../../assets/icon/Left/Slider/commas.svg";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Pagination, Navigation } from "swiper/modules";
 
-import Aygerim from "../../../assets/img/left/Slider/aygerim.png";
-import Inst from "../../../assets/icon/Left/Slider/inst.svg";
-import Commas from "../../../assets/icon/Left/Slider/commas.svg";
-import TwoGis from "../../../assets/icon/Left/Slider/TwoGis.svg";
-import Whatsapp from "../../../assets/icon/Left/Slider/Whatsapp.svg";
-import Call from "../../../assets/icon/Left/Slider/Call.svg";
+import "./style.scss";
 
 function Slider({ selectedTab }) {
     const swiperRef = useRef(null);
+
+    const ref = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+   
     // Массивы отделяем по категориям
     const pediarts = [
         {
@@ -98,31 +104,33 @@ function Slider({ selectedTab }) {
 
     useEffect(() => {
         if (swiperRef.current?.swiper) {
-          swiperRef.current.swiper.slideTo(0); // сбрасываем на 1 слайд
+            swiperRef.current.swiper.slideTo(0); // сбрасываем на 1 слайд
         }
-      }, [selectedTab]);
+    }, [selectedTab]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    setIsVisible(entry.isIntersecting);
+                },
+                {
+                    threshold: 0.3,
+                }
+            );
+    
+            const node = ref.current;
+            if (node) observer.observe(node);
+    
+            return () => {
+                if (node) observer.unobserve(node);
+            };
+        }, 0);
+    }, []);
+    
 
     return (
-        <div className="hero-swiper">
-            {/* {window.innerWidth <= 700 && (
-                <div className="hero-swiper__list">
-                    <li>
-                        <a href="#" target="_blank">
-                            <img src={TwoGis} alt="TwoGis" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <img src={Whatsapp} alt="Whatsapp" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <img src={Call} alt="Call" />
-                        </a>
-                    </li>
-                </div>
-            )} */}
+        <div ref={ref} className={`hero-swiper ${isVisible ? "animate" : ""}`}>
             <Swiper
                 ref={swiperRef}
                 slidesPerView={1}
@@ -132,7 +140,7 @@ function Slider({ selectedTab }) {
                 className="hero-slider"
             >
                 {currentData.map((item) => (
-                    <SwiperSlide key={item.id} >
+                    <SwiperSlide key={item.id}>
                         <div className="hero-swiper__block">
                             <img
                                 src={Aygerim}

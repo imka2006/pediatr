@@ -9,13 +9,16 @@ import Conect from "../../assets/icon/Principles/List/Conect.svg";
 import Necessary from "../../assets/icon/Principles/List/Necessary.svg";
 import Safety from "../../assets/icon/Principles/List/Safety.svg";
 
+import bgQueue from "../../assets/icon/Principles/List/bgQueue.svg";
+import bgConect from "../../assets/icon/Principles/List/bgConect.svg";
+import bgNecessary from "../../assets/icon/Principles/List/bgNecessary.svg";
+import bgSafety from "../../assets/icon/Principles/List/bgSafety.svg";
 
-
-import Consultation from "../../assets/icon/Services/Price/Consultation.svg"
-import Drip from "../../assets/icon/Services/Price/Drip.svg"
-import Injection from "../../assets/icon/Services/Price/Injection.svg"
-import Inhalation from "../../assets/icon/Services/Price/Inhalation.svg"
-import Blood from "../../assets/icon/Services/Price/Blood.svg"
+import Consultation from "../../assets/icon/Services/Price/Consultation.svg";
+import Drip from "../../assets/icon/Services/Price/Drip.svg";
+import Injection from "../../assets/icon/Services/Price/Injection.svg";
+import Inhalation from "../../assets/icon/Services/Price/Inhalation.svg";
+import Blood from "../../assets/icon/Services/Price/Blood.svg";
 
 import "./style.scss";
 function Principles() {
@@ -28,66 +31,70 @@ function Principles() {
         {
             id: 0,
             img: Queue,
+            bg:bgQueue,
             name: "Принимаем без очередей по записи",
             text: "Минимизируем количеством пациентов, одновременно находящихся в одном помещении.",
         },
         {
             id: 1,
             img: Conect,
+            bg:bgConect,
             name: "Доктор остается с вами на связи",
             text: "В целях контроля ситуации Доктор ведет пациента до полного выздоровления или улучшение качества жизни при хронических заболеваниях.",
         },
         {
             id: 2,
             img: Necessary,
+            bg:bgNecessary,
             name: "Назначаем только необходимое",
             text: "С доказанной эффективностью и безопасностью в соответствии с международными протоколами и стандартами и ничего лишнего.",
         },
         {
             id: 3,
             img: Safety,
+            bg:bgSafety,
             name: "Чистота и стерильность",
             text: "Одноразовые маски и перчатки, инструменты и простыни, обеззараживание и стерилизация воздуха в клинике, санитарная уборка, контроль здоровья персонала. Подготовка и дезинфекция кабинета перед каждым пациентом.",
         },
     ];
 
     const mobile = [
-            {
-                id:0,
-                img: Consultation,
-                name:"Консультация врача",
-                text:"",
-                price:950
-            },
-            {
-                id:1,
-                img: Drip,
-                name:"Капельницы",
-                text:"Опытные медсестры ставят капельницу детям с 1 месяца",
-                price:350
-            },
-            {
-                id:2,
-                img: Injection,
-                name:"Инъекции (уколы)",
-                text:"Внутривенно, внутримышечно, подкожно детям с 1 месяца",
-                price:100
-            },
-            {
-                id:3,
-                img: Inhalation,
-                name:"Ингаляции",
-                text:"Специальные детские ингаляторы, бесшумные, портативные",
-                price:150
-            },
-            {
-                id:4,
-                img: Blood,
-                name:"Взятие анализов крови",
-                text:"Специальные детские ингаляторы, бесшумные, портативные",
-                price:150
-            },
-        ]
+        {
+            id: 0,
+            img: Consultation,
+            name: "Консультация врача",
+            text: "",
+            price: 950,
+        },
+        {
+            id: 1,
+            img: Drip,
+            name: "Капельницы",
+            text: "Опытные медсестры ставят капельницу детям с 1 месяца",
+            price: 350,
+        },
+        {
+            id: 2,
+            img: Injection,
+            name: "Инъекции (уколы)",
+            text: "Внутривенно, внутримышечно, подкожно детям с 1 месяца",
+            price: 100,
+        },
+        {
+            id: 3,
+            img: Inhalation,
+            name: "Ингаляции",
+            text: "Специальные детские ингаляторы, бесшумные, портативные",
+            price: 150,
+        },
+        {
+            id: 4,
+            img: Blood,
+            name: "Взятие анализов крови",
+            text: "Специальные детские ингаляторы, бесшумные, портативные",
+            price: 150,
+        },
+    ];
 
     return (
         <>
@@ -101,25 +108,13 @@ function Principles() {
                             window.innerWidth < 1115 ? (
                                 <Post img={First} text={secondText} link="#" />
                             ) : null}
-                            {/* {window.innerWidth >= 1115 &&
-                            window.innerWidth >= 685 ? (
-                                <></>
-                            ) : (
-                                <>
-                                    <Post
-                                        img={First}
-                                        text={firstText}
-                                        link={"#"}
-                                    />
-                                </>
-                            )} */}
                         </div>
                         {window.innerWidth < 700 ? (
-                            <List items={mobile} title="Стоимость услуг" />
+                            <List items={mobile} animation={false} title="Стоимость услуг" />
                         ) : (
                             <></>
                         )}
-                        <List items={list} title="Основные принципы работы" />
+                        <List items={list} animation={true} title="Основные принципы работы" />
                     </div>
                 </div>
             </div>

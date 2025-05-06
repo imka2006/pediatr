@@ -4,8 +4,6 @@ import Diagnosis from "./Diagnosis";
 import Sub from "./Sub";
 import List from "../List";
 
-
-
 import Consultation from "../../assets/icon/Services/Price/Consultation.svg"
 import Drip from "../../assets/icon/Services/Price/Drip.svg"
 import Injection from "../../assets/icon/Services/Price/Injection.svg"
@@ -56,7 +54,7 @@ function Services() {
 
     return (
         <>
-            <div className="services">
+            <section className="services">
                 <div className="container">
                     <div className="services-content">
                         <div className="services-wrapper">
@@ -67,14 +65,14 @@ function Services() {
                             <Sub />
                         </div>
                         {window.innerWidth >= 700 ? (
-                            <List items={list} title="Стоимость услуг" />
+                            <List items={list} animation={false} title="Стоимость услуг" />
                         ) : (
                             <></>
                         )}
                         
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     );
 }

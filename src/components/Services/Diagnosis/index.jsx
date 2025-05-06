@@ -1,31 +1,44 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Icon from "../../../assets/icon/Services/Diagnosis/icon.svg";
 import MobileIcon from "../../../assets/icon/Services/Diagnosis/MobileIcon.svg";
 import Check from "../../../assets/icon/Services/Diagnosis/check.svg";
 import Bg from "../../../assets/img/Bg/Diagnosis.png";
 import MobileBg from "../../../assets/img/Bg/MobileDiagnosis.png";
 
+import "./style.scss"
+
 function Diagnosis() {
+
+    const ref = useRef(null);
+        const [isVisible, setIsVisible] = useState(false);
+    
+        useEffect(() => {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    setIsVisible(entry.isIntersecting);
+                },
+                {
+                    threshold: 0.3,
+                }
+            );
+        
+            const node = ref.current;
+            if (node) observer.observe(node);
+        
+            return () => {
+                if (node) observer.unobserve(node);
+            };
+        }, []);
     return (
-        <div className="services-diagnosis">
-            {window.innerWidth >= 700 ? (
+        <div ref={ref} className={`services-diagnosis ${isVisible ? "animate" : ""}`}>
                 <img className="services-diagnosis__bg" src={Bg} alt="bg" />
-            ) : (
-                <img
-                    className="services-diagnosis__bg"
-                    src={MobileBg}
-                    alt="bg"
-                />
-            )}
+                <img className="services-diagnosis__bg color" src={MobileBg} alt="bg" />
             <div className="services-diagnosis__head">
                 <h4 className="services-diagnosis__title">
                     Мы ставим точные диагнозы
                 </h4>
-                {window.innerWidth >= 700 ? (
-                    <img src={Icon} alt="icon" />
-                ) : (
-                    <img src={MobileIcon} alt="icon" />
-                )}
+                    <img className="services-diagnosis__icon" src={Icon} alt="icon" />
+                    <img className="services-diagnosis__icon color" src={MobileIcon} alt="icon" />
             </div>
             <p className="services-diagnosis__text">
                 Быстрая диагностика за <span>5 минут</span>

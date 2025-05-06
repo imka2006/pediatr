@@ -1,13 +1,40 @@
-import React from "react";
-import Parking from "../../../assets/icon/Right/Location/parking.svg";
-import twoGis from "../../../assets/icon/Right/Location/twoGis.svg";
-import googleMap from "../../../assets/icon/Right/Location/googleMap.svg";
-import yandexMap from "../../../assets/icon/Right/Location/yandexMap.svg";
+import React, { useEffect, useRef, useState } from "react";
+
+import Parking from "../../../../assets/icon/Right/Location/parking.svg";
+import twoGis from "../../../../assets/icon/Right/Location/twoGis.svg";
+import googleMap from "../../../../assets/icon/Right/Location/googleMap.svg";
+import yandexMap from "../../../../assets/icon/Right/Location/yandexMap.svg"; 
+
+import "./style.scss"
 
 function Location() {
+    const ref = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsVisible(entry.isIntersecting);
+            },
+            {
+                threshold: 0.3,
+            }
+        );
+
+        const node = ref.current;
+        if (node) observer.observe(node);
+
+        return () => {
+            if (node) observer.unobserve(node);
+        };
+    }, []);
+
     return (
         <>
-            <div className="hero-location">
+            <div
+                ref={ref}
+                className={`hero-location ${isVisible ? "animate" : ""}`}
+            >
                 {window.innerWidth <= 888 ? (
                     <></>
                 ) : (

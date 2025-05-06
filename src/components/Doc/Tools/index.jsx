@@ -1,12 +1,43 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 import Leandia from "../../../assets/img/Doc/Leandia.png";
 import Litmann from "../../../assets/img/Doc/Litmann.png";
 import Baxter from "../../../assets/img/Doc/Baxter.png";
+import BgMb from "../../../assets/img/Bg/MobileDiagnosis.png";
+import Bg from "../../../assets/img/Bg/Doc.png";
+
+import "./style.scss";
 
 function Tools() {
+    const ref = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsVisible(entry.isIntersecting);
+            },
+            {
+                threshold: 0.3,
+            }
+        );
+
+        const node = ref.current;
+        if (node) observer.observe(node);
+
+        return () => {
+            if (node) observer.unobserve(node);
+        };
+    }, []);
+
     return (
         <>
-            <div className="doc-tools">
+            <div
+                ref={ref}
+                className={`doc-tools ${isVisible ? "animate" : ""}`}
+            >
+                <img src={Bg} className="doc-tools__bg" alt="bg" />
+                <img src={BgMb} className="doc-tools__bg color" alt="bg" />
                 <div className="doc-tools__wrapper">
                     <div className="doc-tools__content">
                         <h3 className="doc-tools__title">
@@ -17,7 +48,11 @@ function Tools() {
                             детей.
                         </p>
                     </div>
-                    <img className="doc-tools__img" src={Leandia} alt="leandia" />
+                    <img
+                        className="doc-tools__img"
+                        src={Leandia}
+                        alt="leandia"
+                    />
                 </div>
                 <div className="doc-tools__images">
                     <img src={Litmann} alt="Litmann" />

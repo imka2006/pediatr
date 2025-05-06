@@ -1,0 +1,141 @@
+.services-diagnosis {
+    max-width: 310px;
+    width: 100%;
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px 16px 20px 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 4px 20px rgba(138, 173, 255, 0.5);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+
+    &.animate {
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 8px 30px rgba(138, 173, 255, 0.4);
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(138, 173, 255, 0.5);
+        transition: all 0.4s ease;
+
+        .services-diagnosis__bg.color,
+        .services-diagnosis__icon.color {
+            opacity: 1;
+        }
+
+        .services-diagnosis__icon {
+            opacity: 0;
+        }
+    }
+
+    &__bg {
+        position: absolute;
+        transition: opacity 0.5s ease;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        transition: 0.5s;
+        &.color {
+            opacity: 0;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        transition: opacity 0.5s ease;
+        right: 16px;
+        top: 16px;
+        opacity: 1;
+        transition: 0.5s;
+        &.color {
+            opacity: 0;
+        }
+    }
+
+    &__head {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 20px;
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        span {
+            font-weight: 700;
+        }
+    }
+    &__list {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    &__btn {
+        color: #1b8bac;
+        border: 1px solid #1b8bac;
+        padding: 8px 25px;
+        font-weight: 400;
+        font-size: 14px;
+        background: #fff;
+        border-radius: 50px;
+        margin-top: auto;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            background: #249dc0;
+            color: #fff;
+        }
+    }
+    &__item {
+        font-weight: 400;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    @media screen and (max-width: 1115px) {
+        max-width: unset;
+        &__head {
+            width: 100%;
+        }
+        &__btn {
+            margin-top: auto;
+        }
+    }
+    @media screen and (max-width: 700px) {
+        &__list {
+            margin-bottom: 20px;
+        }
+        &__icon,
+        &__bg {
+            transition: opacity 0.6s ease;
+        }
+        &.animate {
+            .services-diagnosis__bg.color,
+            .services-diagnosis__icon.color {
+                opacity: 1;
+            }
+
+            .services-diagnosis__icon {
+                opacity: 0;
+            }
+        }
+    }
+}

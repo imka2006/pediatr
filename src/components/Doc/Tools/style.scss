@@ -1,0 +1,106 @@
+.doc-tools {
+    width: 100%;
+    padding: 20px;
+    max-width: 640px;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    // flex-direction: column;
+    box-shadow: 0 4px 20px rgba(138, 173, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(138, 173, 255, 0.2);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+
+    &.animate {
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 8px 30px rgba(138, 173, 255, 0.4);
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(138, 173, 255, 0.5);
+        transition: all 0.4s ease;
+
+        .doc-tools__bg.color,
+        .doc-tools__icon.color {
+            opacity: 1;
+        }
+
+        .doc-tools__icon {
+            opacity: 0;
+        }
+    }
+
+    &__bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        transition: 0.5s;
+        z-index: 1;
+        &.color {
+            opacity: 0;
+            width: 220px;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 2;
+    }
+    &__content {
+        max-width: 241px;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 120%;
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 150%;
+        font-style: italic;
+        margin-top: 8px;
+    }
+    &__images {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        margin-top: auto;
+        z-index: 2;
+    }
+
+    @media screen and (max-width: 1000px) {
+        & {
+            flex-direction: column;
+
+            img {
+                max-width: 100%;
+            }
+
+            &__content {
+                max-width: unset;
+            }
+            &__wrapper {
+                flex-direction: column;
+            }
+            &__images {
+                margin-top: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+            &__img {
+                margin-top: 30px;
+            }
+        }
+    }
+}

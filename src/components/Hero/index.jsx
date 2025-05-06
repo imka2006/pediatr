@@ -1,9 +1,12 @@
 import React from "react";
+
 import Left from "./Left";
-import "./style.scss";
 import Right from "./Right";
+
 import Top from "./Right/Top";
 import Schedule from "./Right/Schedule";
+
+import "./style.scss";
 function Hero({setModal}) {
     return (
         <>

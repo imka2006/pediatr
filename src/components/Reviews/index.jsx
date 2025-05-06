@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import axios from "axios";
 import Cart from "./Cart";
 import TwoGis from "./TwoGis";
@@ -125,7 +126,7 @@ const getBatch = (data, index) => {
 
 
   return (
-    <div className="reviews">
+    <section className="reviews">
       <div className="container">
         <div className="reviews-wrapper">
           <TwoGis />
@@ -139,7 +140,7 @@ const getBatch = (data, index) => {
           <div ref={observerRef} style={{ height: 1, minHeight: "10px" }}></div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

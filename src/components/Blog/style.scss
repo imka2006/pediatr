@@ -1,0 +1,134 @@
+.blog {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+    right: 20px;
+    bottom: 45px;
+    animation: fadeInUp 0.8s ease-in-out;
+  
+    li {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInOneByOne 0.6s ease forwards;
+  
+      &:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+      &:nth-child(3) {
+        animation-delay: 1s;
+      }
+    }
+  
+    a {
+      display: flex;
+      align-items: center;
+      position: relative;
+      transition: 0.3s;
+  
+      
+    }
+    a:hover .blog-name { 
+      transform: scaleX(1);       // вручную открываем
+    }
+  
+    &-name {
+      padding: 10.5px 45px 10.5px 14px;
+      background: #fff;
+      position: absolute;
+      right: 10px;
+      z-index: -1;
+      width: max-content;
+      border-radius: 50px;
+      font-weight: 400;
+      font-size: 16px;
+      box-shadow: 0px 4px 4px 2px #eff3fe;
+      transform-origin: right;
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      max-height: 40px;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+  
+    &-name.first {
+      animation: growThenShrink 3s ease forwards;
+      animation-delay: 0.5s;
+    }
+  
+    &-name.second {
+      animation: growThenShrink 3s ease forwards;
+      animation-delay: 3.5s;
+    }
+    &-name.nonstop {
+      animation: none !important;
+    }
+  
+    li::marker {
+      content: "";
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes growThenShrink {
+    0% {
+        transform: scaleX(0);
+        box-shadow: 0px 4px 4px 2px #eff3fe;
+    }
+    15% {
+        transform: scaleX(1);
+        box-shadow: 0px 4px 4px 2px #eff3fe;
+    }
+    80% {
+        transform: scaleX(1);
+        box-shadow: 0px 2px 2px 1px #eff3fe;
+    }
+    100% {
+        transform: scaleX(0);
+        box-shadow: 0px 0px 0px 0px #eff3fe;
+    }
+  }
+  
+  @keyframes fadeInOneByOne {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+@keyframes growThenShrink {
+    0% {
+        transform: scaleX(0);
+        box-shadow: 0px 4px 4px 2px #eff3fe;
+    }
+    15% {
+        transform: scaleX(1);
+        box-shadow: 0px 4px 4px 2px #eff3fe;
+    }
+    80% {
+          transform: scaleX(1);
+          box-shadow: 0px 2px 2px 1px #eff3fe;
+    }
+    100% {
+        transform: scaleX(0);
+        box-shadow: 0px 0px 0px 0px #eff3fe;
+    }
+}
+

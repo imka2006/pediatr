@@ -1,20 +1,20 @@
 import React from "react";
 import License from "./License";
+import Tools from "./Tools";
 
 import "./style.scss";
-import Tools from "./Tools";
 
 function Doc() {
     return (
         <>
-            <div className="doc">
+            <section className="doc">
                 <div className="container">
                     <div className="doc-wrapper">
                         <License />
                         <Tools />
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     );
 }

@@ -105,8 +105,8 @@ const Calendar = ({ setFinishDate, setCalendar }) => {
         </div>
 
         <div className="calendar-hoursBlock">
+        <img src={Close} onClick={() => setCalendar(false)} className="calendar-close" alt="" />
           <h3>Свободные часы</h3>
-          <img src={Close} onClick={() => setCalendar(false)} className="calendar-close" alt="" />
           <ul className="calendar-hoursList">
             {getWorkingHours(selectedDate).map((hour, idx) => (
               <li
@@ -118,6 +118,8 @@ const Calendar = ({ setFinishDate, setCalendar }) => {
               </li>
             ))}
           </ul>
+
+          <button onClick={() => setCalendar(false)} className="calendar-btn">Готово</button>
         </div>
       </div>
     </div>

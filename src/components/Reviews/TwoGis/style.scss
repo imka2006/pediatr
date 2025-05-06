@@ -1,0 +1,49 @@
+.reviews-main {
+    width: 23.847%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(138, 173, 255, 0.5);
+
+    &__bg {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 36px;
+        span {
+            color: #96c446;
+        }
+    }
+    &__grade {
+        font-weight: 700;
+        font-size: 50px;
+        margin: 6px 0;
+    }
+    &__counter {
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+    &__star {
+        display: flex;
+        gap: 10px;
+        z-index: 1;
+    }
+
+    @media screen and (max-width: 1160px) {
+        &__title {
+            font-size: 25px;
+        }
+    }
+    @media screen and (max-width: 970px) {
+        & {
+            width: unset;
+            &__title {
+                font-size: 36px;
+            }
+        }
+    }
+}

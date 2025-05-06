@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Profile from "../../assets/icon/Principles/Post/Profile.svg"
 import Like from "../../assets/icon/Principles/Post/Like.svg"
@@ -11,9 +11,31 @@ import Dots from "../../assets/icon/Principles/Post/Dots.svg"
 import "./style.scss"
 
 function Post({img, text, link}) {
+
+     const ref = useRef(null);
+        const [isVisible, setIsVisible] = useState(false);
+    
+        useEffect(() => {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    setIsVisible(entry.isIntersecting);
+                },
+                {
+                    threshold: 0.3,
+                }
+            );
+        
+            const node = ref.current;
+            if (node) observer.observe(node);
+        
+            return () => {
+                if (node) observer.unobserve(node);
+            };
+        }, []);
+
     return (
         <>
-        <div className="post">
+        <div ref={ref} className={`post ${isVisible ? "animate" : ""}`}>
             <div className="post-head">
                 <div className="post-info">
                     <img src={Profile} alt="profile" />

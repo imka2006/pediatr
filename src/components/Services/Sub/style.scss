@@ -1,0 +1,122 @@
+.services-sub {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 20px;
+    max-width: 640px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(138, 173, 255, 0.2);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+
+    &.animate {
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 8px 30px rgba(138, 173, 255, 0.4);
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(138, 173, 255, 0.5);
+        transition: all 0.4s ease;
+
+        .services-sub__bg {
+            width: 350px;
+        }
+    }
+
+    &__bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        transition: all 0.6s ease-out;
+        width: 318px;
+        height: 150px;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 32px;
+        color: #fff;
+    }
+    &__subtitle {
+        font-weight: 400;
+        font-size: 22px;
+        color: #fff;
+        margin-bottom: 9px;
+    }
+    &__btn {
+        background: #fff;
+        color: #000;
+        padding: 8px 24px;
+        font-weight: 400;
+        font-size: 14px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            background: #249dc0;
+            color: #fff;
+        }
+    }
+    &__list {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    &__item {
+        font-weight: 400;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    @media screen and (max-width: 1115px) {
+        &__list {
+            max-width: unset;
+        }
+        &-content {
+            flex-wrap: wrap;
+        }
+
+        & {
+            max-width: unset;
+            margin: 0;
+        }
+
+        &:hover .services-sub__bg {
+            width: 70%;
+            transition: 0.7s;
+        }
+    }
+    @media screen and (max-width: 700px) {
+        
+        & {
+            flex-direction: column;
+            padding: 20px;
+            &__list {
+                margin-top: 13%;
+            }
+            &__bg {
+                width: 100%;
+                max-height: 130px;
+            }
+            &__btn {
+                color: #1b8bac;
+                border: 1px solid #1b8bac;
+                max-width: 135px;
+                margin-top: 20px;
+            }
+        }
+    }
+}
