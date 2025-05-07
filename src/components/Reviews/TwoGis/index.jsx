@@ -12,7 +12,9 @@ function TwoGis() {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsVisible(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
             },
             {
                 threshold: 0.3,
@@ -20,16 +22,26 @@ function TwoGis() {
         );
 
         const node = ref.current;
-        if (node) observer.observe(node);
+
+        // Добавляем задержку перед observe
+        const timeout = setTimeout(() => {
+            if (node) observer.observe(node);
+        }, 50);
 
         return () => {
+            clearTimeout(timeout);
             if (node) observer.unobserve(node);
         };
     }, []);
 
     return (
         <>
-            <div ref={ref} className={`reviews-main reviews-block ${isVisible ? "animate" : ""}`}>
+            <div
+                ref={ref}
+                className={`reviews-main reviews-block ${
+                    isVisible ? "animate" : ""
+                }`}
+            >
                 <img className="reviews-main__bg" src={Bg} alt="bg" />
                 <h3 className="reviews-main__title">
                     Отзывы <span>2Gis</span>

@@ -31,28 +31,28 @@ function Principles() {
         {
             id: 0,
             img: Queue,
-            bg:bgQueue,
+            bg: bgQueue,
             name: "Принимаем без очередей по записи",
             text: "Минимизируем количеством пациентов, одновременно находящихся в одном помещении.",
         },
         {
             id: 1,
             img: Conect,
-            bg:bgConect,
+            bg: bgConect,
             name: "Доктор остается с вами на связи",
             text: "В целях контроля ситуации Доктор ведет пациента до полного выздоровления или улучшение качества жизни при хронических заболеваниях.",
         },
         {
             id: 2,
             img: Necessary,
-            bg:bgNecessary,
+            bg: bgNecessary,
             name: "Назначаем только необходимое",
             text: "С доказанной эффективностью и безопасностью в соответствии с международными протоколами и стандартами и ничего лишнего.",
         },
         {
             id: 3,
             img: Safety,
-            bg:bgSafety,
+            bg: bgSafety,
             name: "Чистота и стерильность",
             text: "Одноразовые маски и перчатки, инструменты и простыни, обеззараживание и стерилизация воздуха в клинике, санитарная уборка, контроль здоровья персонала. Подготовка и дезинфекция кабинета перед каждым пациентом.",
         },
@@ -62,6 +62,7 @@ function Principles() {
         {
             id: 0,
             img: Consultation,
+            bg: bgQueue,
             name: "Консультация врача",
             text: "",
             price: 950,
@@ -69,6 +70,7 @@ function Principles() {
         {
             id: 1,
             img: Drip,
+            bg: bgConect,
             name: "Капельницы",
             text: "Опытные медсестры ставят капельницу детям с 1 месяца",
             price: 350,
@@ -76,6 +78,7 @@ function Principles() {
         {
             id: 2,
             img: Injection,
+            bg: bgNecessary,
             name: "Инъекции (уколы)",
             text: "Внутривенно, внутримышечно, подкожно детям с 1 месяца",
             price: 100,
@@ -83,6 +86,7 @@ function Principles() {
         {
             id: 3,
             img: Inhalation,
+            bg: bgSafety,
             name: "Ингаляции",
             text: "Специальные детские ингаляторы, бесшумные, портативные",
             price: 150,
@@ -90,6 +94,7 @@ function Principles() {
         {
             id: 4,
             img: Blood,
+            bg: bgQueue,
             name: "Взятие анализов крови",
             text: "Специальные детские ингаляторы, бесшумные, портативные",
             price: 150,
@@ -110,11 +115,19 @@ function Principles() {
                             ) : null}
                         </div>
                         {window.innerWidth < 700 ? (
-                            <List items={mobile} animation={false} title="Стоимость услуг" />
+                            <List
+                                items={mobile}
+                                animation={"false"}
+                                title="Стоимость услуг"
+                            />
                         ) : (
                             <></>
                         )}
-                        <List items={list} animation={true} title="Основные принципы работы" />
+                        <List
+                            items={list}
+                            animation={"true"}
+                            title="Основные принципы работы"
+                        />
                     </div>
                 </div>
             </div>

@@ -17,22 +17,25 @@ function Sub() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsVisible(entry.isIntersecting);
-            },
-            {
-                threshold: 0.3,
-            }
-        );
-
-        const node = ref.current;
-        if (node) observer.observe(node);
-
-        return () => {
-            if (node) observer.unobserve(node);
-        };
-    }, []);
+           const node = ref.current;
+           if (!node) return;
+       
+           const observer = new IntersectionObserver(
+               ([entry]) => {
+                   if (entry.isIntersecting) {
+                       setIsVisible(true);
+                       observer.disconnect(); // полностью отключаем наблюдателя
+                   }
+               },
+               { threshold: 0.3 }
+           );
+       
+           observer.observe(node);
+       
+           return () => {
+               observer.disconnect(); // на случай размонтирования
+           };
+       }, []);
 
     return (
         <>

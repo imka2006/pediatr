@@ -5,32 +5,39 @@ import Second from "../../../assets/icon/Doc/Second.svg";
 import BgMb from "../../../assets/img/Bg/MobileDiagnosis.png";
 import Bg from "../../../assets/img/Bg/Doc.png";
 
-import "./style.scss"
+import "./style.scss";
 
 function License() {
     const ref = useRef(null);
-        const [isVisible, setIsVisible] = useState(false);
-    
-        useEffect(() => {
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    setIsVisible(entry.isIntersecting);
-                },
-                {
-                    threshold: 0.3,
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const node = ref.current;
+        if (!node) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect(); // полностью отключаем наблюдателя
                 }
-            );
-        
-            const node = ref.current;
-            if (node) observer.observe(node);
-        
-            return () => {
-                if (node) observer.unobserve(node);
-            };
-        }, []);
+            },
+            { threshold: 0.3 }
+        );
+
+        observer.observe(node);
+
+        return () => {
+            observer.disconnect(); // на случай размонтирования
+        };
+    }, []);
+
     return (
         <>
-            <div ref={ref} className={`doc-license ${isVisible ? "animate" : ""}`}>
+            <div
+                ref={ref}
+                className={`doc-license ${isVisible ? "animate" : ""}`}
+            >
                 <img src={Bg} className="doc-license__bg" alt="bg" />
                 <img src={BgMb} className="doc-license__bg color" alt="bg" />
                 <div className="doc-license__content">

@@ -11,22 +11,24 @@ import "./style.scss";
 function Tools() {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
-
     useEffect(() => {
+        const node = ref.current;
+        if (!node) return;
+
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsVisible(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect(); // полностью отключаем наблюдателя
+                }
             },
-            {
-                threshold: 0.3,
-            }
+            { threshold: 0.3 }
         );
 
-        const node = ref.current;
-        if (node) observer.observe(node);
+        observer.observe(node);
 
         return () => {
-            if (node) observer.unobserve(node);
+            observer.disconnect(); // на случай размонтирования
         };
     }, []);
 

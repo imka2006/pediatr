@@ -51,6 +51,10 @@
         left: -5px;
         top: -5px;
         z-index: 0;
+        &.another  {
+            left: 1px;
+            top: 2px;
+        }
     }
     &-icon {
         z-index: 1;

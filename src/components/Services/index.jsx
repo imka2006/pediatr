@@ -10,6 +10,11 @@ import Injection from "../../assets/icon/Services/Price/Injection.svg"
 import Inhalation from "../../assets/icon/Services/Price/Inhalation.svg"
 import Blood from "../../assets/icon/Services/Price/Blood.svg"
 
+import bgQueue from "../../assets/icon/Principles/List/bgQueue.svg";
+import bgConect from "../../assets/icon/Principles/List/bgConect.svg";
+import bgNecessary from "../../assets/icon/Principles/List/bgNecessary.svg";
+import bgSafety from "../../assets/icon/Principles/List/bgSafety.svg";
+
 import "./style.scss";
 
 function Services() {
@@ -18,6 +23,7 @@ function Services() {
         {
             id:0,
             img: Consultation,
+            bg:bgQueue,
             name:"Консультация врача",
             text:"",
             price:950
@@ -25,6 +31,7 @@ function Services() {
         {
             id:1,
             img: Drip,
+            bg:bgConect,
             name:"Капельницы",
             text:"Опытные медсестры ставят капельницу детям с 1 месяца",
             price:350
@@ -32,6 +39,7 @@ function Services() {
         {
             id:2,
             img: Injection,
+            bg:bgNecessary,
             name:"Инъекции (уколы)",
             text:"Внутривенно, внутримышечно, подкожно детям с 1 месяца",
             price:100
@@ -39,6 +47,7 @@ function Services() {
         {
             id:3,
             img: Inhalation,
+            bg:bgSafety,
             name:"Ингаляции",
             text:"Специальные детские ингаляторы, бесшумные, портативные",
             price:150
@@ -46,6 +55,7 @@ function Services() {
         {
             id:4,
             img: Blood,
+            bg:bgQueue,
             name:"Взятие анализов крови",
             text:"Специальные детские ингаляторы, бесшумные, портативные",
             price:150
@@ -65,7 +75,7 @@ function Services() {
                             <Sub />
                         </div>
                         {window.innerWidth >= 700 ? (
-                            <List items={list} animation={false} title="Стоимость услуг" />
+                            <List items={list} animation={"false"} title="Стоимость услуг" />
                         ) : (
                             <></>
                         )}

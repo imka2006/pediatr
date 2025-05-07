@@ -1,9 +1,10 @@
 .hero-swiper {
     max-width: 460px;
     position: relative;
-    opacity: 0;
-    transform: translateY(60px);
     transition: all 0.6s ease;
+    opacity: 0;
+    transform: translateY(40px);
+    background: #EFF3FE;
 
     &.animate {
         opacity: 1;
@@ -163,7 +164,7 @@
 .swiper-button-next:after,
 .swiper-rtl .swiper-button-prev:after {
     content: "";
-    background: url("../../assets/icon/Left/Slider/Next.svg");
+    background: url("../../../../assets/icon/Left/Slider/Next.svg");
     width: 30px;
     height: 60px;
     color: #8da2a8;
@@ -172,5 +173,5 @@
 }
 .swiper-button-prev:after,
 .swiper-rtl .swiper-button-next:after {
-    background: url("../../assets/icon/Left/Slider/Prev.svg");
+    background: url("../../../../assets/icon/Left/Slider/Prev.svg");
 }

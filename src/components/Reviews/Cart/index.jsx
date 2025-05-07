@@ -14,20 +14,28 @@ function Cart({ item, wid }) {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsVisible(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
             },
             {
                 threshold: 0.3,
             }
         );
-
+    
         const node = ref.current;
-        if (node) observer.observe(node);
-
+    
+        // Добавляем задержку перед observe
+        const timeout = setTimeout(() => {
+            if (node) observer.observe(node);
+        }, 50);
+    
         return () => {
+            clearTimeout(timeout);
             if (node) observer.unobserve(node);
         };
     }, []);
+    
 
     const formatDate = (dateString) =>
         new Date(dateString).toLocaleDateString("ru-RU", {
@@ -64,7 +72,7 @@ function Cart({ item, wid }) {
             className={`reviews-block ${wid} ${isVisible ? "animate" : ""}`}
         >
             <h4 className="reviews-block__name">
-                {item.user_name || "Аноним"}
+                {item.user_name}
             </h4>
             <div className="reviews-block__star">
                 {Array(item.rating)
@@ -89,7 +97,6 @@ function Cart({ item, wid }) {
             {isLongText && !showFullText && (
                 <button
                     className="reviews-block__link"
-                    // onClick={() => setShowFullText(true)}
                 >
                     Читать полностью <img src={Arrow} alt="arrow" />
                 </button>

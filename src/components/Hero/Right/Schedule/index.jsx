@@ -7,20 +7,23 @@ function Schedule() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        const node = ref.current;
+        if (!node) return;
+
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsVisible(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect(); // полностью отключаем наблюдателя
+                }
             },
-            {
-                threshold: 0.3,
-            }
+            { threshold: 0.3 }
         );
 
-        const node = ref.current;
-        if (node) observer.observe(node);
+        observer.observe(node);
 
         return () => {
-            if (node) observer.unobserve(node);
+            observer.disconnect(); // на случай размонтирования
         };
     }, []);
     // Функция для получения текущего времени в часовом поясе Кыргызстана (Asia/Bishkek)
@@ -80,7 +83,10 @@ function Schedule() {
     const statusText = salonOpen ? "Сейчас открыто" : "Сейчас закрыто";
 
     return (
-        <div ref={ref} className={`hero-schedule ${isVisible ? "animate" : ""}`}>
+        <div
+            ref={ref}
+            className={`hero-schedule ${isVisible ? "animate" : ""}`}
+        >
             <h3 className="hero-schedule__title">График работы</h3>
             <div className="hero-schedule__wrapper">
                 {/* Статус салона */}

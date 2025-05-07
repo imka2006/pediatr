@@ -5,40 +5,57 @@ import Check from "../../../assets/icon/Services/Diagnosis/check.svg";
 import Bg from "../../../assets/img/Bg/Diagnosis.png";
 import MobileBg from "../../../assets/img/Bg/MobileDiagnosis.png";
 
-import "./style.scss"
+import "./style.scss";
 
 function Diagnosis() {
-
     const ref = useRef(null);
-        const [isVisible, setIsVisible] = useState(false);
-    
-        useEffect(() => {
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    setIsVisible(entry.isIntersecting);
-                },
-                {
-                    threshold: 0.3,
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const node = ref.current;
+        if (!node) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect(); // полностью отключаем наблюдателя
                 }
-            );
-        
-            const node = ref.current;
-            if (node) observer.observe(node);
-        
-            return () => {
-                if (node) observer.unobserve(node);
-            };
-        }, []);
+            },
+            { threshold: 0.3 }
+        );
+
+        observer.observe(node);
+
+        return () => {
+            observer.disconnect(); // на случай размонтирования
+        };
+    }, []);
     return (
-        <div ref={ref} className={`services-diagnosis ${isVisible ? "animate" : ""}`}>
-                <img className="services-diagnosis__bg" src={Bg} alt="bg" />
-                <img className="services-diagnosis__bg color" src={MobileBg} alt="bg" />
+        <div
+            ref={ref}
+            className={`services-diagnosis ${isVisible ? "animate" : ""}`}
+        >
+            <img className="services-diagnosis__bg" src={Bg} alt="bg" />
+            <img
+                className="services-diagnosis__bg color"
+                src={MobileBg}
+                alt="bg"
+            />
             <div className="services-diagnosis__head">
                 <h4 className="services-diagnosis__title">
                     Мы ставим точные диагнозы
                 </h4>
-                    <img className="services-diagnosis__icon" src={Icon} alt="icon" />
-                    <img className="services-diagnosis__icon color" src={MobileIcon} alt="icon" />
+                <img
+                    className="services-diagnosis__icon"
+                    src={Icon}
+                    alt="icon"
+                />
+                <img
+                    className="services-diagnosis__icon color"
+                    src={MobileIcon}
+                    alt="icon"
+                />
             </div>
             <p className="services-diagnosis__text">
                 Быстрая диагностика за <span>5 минут</span>
