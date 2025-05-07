@@ -1,23 +1,26 @@
 .hero-tabs {
-    margin-top: 48px;
-    max-width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    opacity: 0;
+    width: 100px;
     transform: translateY(40px);
     transition: all 0.6s ease;
-    background: #EFF3FE;
+    background: #eff3fe;
+    height: 475px;
+    padding-right: 4px;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    // Для simplebar: скрываем системный скроллбар
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     &.animate {
         opacity: 1;
         transform: translateY(0);
-    }
-
-    &:hover {
-        transform: translateY(-4px);
-        transition: all 0.4s ease;
     }
 
     &__item {
@@ -36,38 +39,56 @@
     &__img {
         margin-bottom: 4px;
         padding: 3px;
-        border: 2px solid #eff3fe;
         border-radius: 50%;
         border: 2px solid #fff;
+
         &.active {
-            border: 2px solid #1b8bac;
+            border-color: #1b8bac;
         }
     }
 
+    .simplebar-content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
     @media screen and (max-width: 1015px) {
-        & {
+        flex-direction: unset;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 450px;
+        height: 140px;
+        margin-top: -40px;
+        .simplebar-content {
+            display: flex;
             flex-direction: unset;
-            align-items: start;
-            justify-content: center;
-            margin: 0 auto;
-            max-width: 400px;
-            width: 100%;
         }
     }
+
     @media screen and (max-width: 888px) {
-        & {
+        height: 475px;
+        width: 100px;
+        margin-top: -20px;
+        .simplebar-content {
             flex-direction: column;
         }
     }
 
     @media screen and (max-width: 600px) {
-        & {
+        height: 140px;
+        width: 450px;
+        margin-top: -40px;
+        .simplebar-content {
+            display: flex;
             flex-direction: unset;
         }
     }
+
     @media screen and (max-width: 490px) {
-        & {
-            gap: 10px;
+        width: 290px; 
+        .simplebar-content {
+            gap: 8px;
         }
     }
 }

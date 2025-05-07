@@ -5,6 +5,10 @@ import ChildNeurologist from "../../../../assets/icon/Left/Tabs/childNeurologist
 import ChildUrologist from "../../../../assets/icon/Left/Tabs/childUrologist.svg";
 import Neotologist from "../../../../assets/icon/Left/Tabs/neotologist.svg";
 
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
+
+
 import "./style.scss";
 
 function Tabs({ onTabClick }) {
@@ -34,53 +38,41 @@ function Tabs({ onTabClick }) {
           };
       }, []);
 
-    const list = [
-        {
-            id: 0,
-            name: "Педиатр",
-            img: Pediatr,
-        },
-        {
-            id: 1,
-            name: "Детский невролог",
-            img: ChildNeurologist,
-        },
-        {
-            id: 2,
-            name: "Детский уролог",
-            img: ChildUrologist,
-        },
-        {
-            id: 3,
-            name: "Неонатолог",
-            img: Neotologist,
-        },
-    ];
+      const list = [
+        { id: 0, name: "Педиатр", img: Pediatr },
+        { id: 1, name: "Детский невролог", img: ChildNeurologist },
+        { id: 2, name: "Детский уролог", img: ChildUrologist },
+        { id: 3, name: "Неонатолог", img: Neotologist },
+        { id: 4, name: "Детский уролог", img: ChildUrologist },
+        { id: 5, name: "Неонатолог", img: Neotologist },
+      ];
+      
 
     return (
-        <div ref={ref} className={`hero-tabs ${isVisible ? "animate" : ""}`}>
-            {list.map((item, index) => (
-                <div
-                    key={item.id}
-                    onClick={() => {
-                        setActive(index);
-                        onTabClick(item.name);
-                    }}
-                    className="hero-tabs__item"
-                >
-                    <img
-                        src={item.img}
-                        className={
-                            active === index
-                                ? "hero-tabs__img active"
-                                : "hero-tabs__img"
-                        }
-                        alt="img"
-                    />
-                    <h5 className="hero-tabs__name">{item.name}</h5>
-                </div>
-            ))}
-        </div>
+        <SimpleBar className={`hero-tabs ${isVisible ? "animate" : ""}`}>
+        {list.map((item, index) => (
+          <div
+            key={index}
+            onClick={() => {
+              setActive(index);
+              onTabClick(item.name);
+            }}
+            className="hero-tabs__item"
+          >
+            <img
+              src={item.img}
+              className={
+                active === index
+                  ? "hero-tabs__img active"
+                  : "hero-tabs__img"
+              }
+              alt="img"
+            />
+            <h5 className="hero-tabs__name">{item.name}</h5>
+          </div>
+        ))}
+      </SimpleBar>
+      
     );
 }
 
