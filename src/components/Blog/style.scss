@@ -9,6 +9,13 @@
     right: 20px;
     bottom: 45px;
     animation: fadeInUp 0.8s ease-in-out;
+
+    &-img {
+      max-width: 40px;
+      &.another {
+        max-width: 60px;
+      }
+    }
   
     li {
       opacity: 0;
@@ -31,9 +38,8 @@
       align-items: center;
       position: relative;
       transition: 0.3s;
-  
-      
     }
+
     a:hover .blog-name { 
       transform: scaleX(1);       // вручную открываем
     }

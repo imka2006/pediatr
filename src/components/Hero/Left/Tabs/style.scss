@@ -41,6 +41,7 @@
         padding: 3px;
         border-radius: 50%;
         border: 2px solid #fff;
+        max-width: 50px;
 
         &.active {
             border-color: #1b8bac;
@@ -88,7 +89,7 @@
     @media screen and (max-width: 490px) {
         width: 290px; 
         .simplebar-content {
-            gap: 8px;
+            gap: 10px;
         }
     }
 }

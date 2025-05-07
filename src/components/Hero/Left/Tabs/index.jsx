@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import Pediatr from "../../../../assets/icon/Left/Tabs/pediatr.svg";
-import ChildNeurologist from "../../../../assets/icon/Left/Tabs/childNeurologist.svg";
-import ChildUrologist from "../../../../assets/icon/Left/Tabs/childUrologist.svg";
-import Neotologist from "../../../../assets/icon/Left/Tabs/neotologist.svg";
+import Pediatr from "../../../../assets/icon/Left/Tabs/pediatr.webp";
+import ChildNeurologist from "../../../../assets/icon/Left/Tabs/childNeurologist.webp";
+import ChildUrologist from "../../../../assets/icon/Left/Tabs/childUrologist.webp";
+import Neotologist from "../../../../assets/icon/Left/Tabs/neotologist.webp";
 
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';

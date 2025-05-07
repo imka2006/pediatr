@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import First from "../../../assets/icon/Doc/First.svg";
-import Second from "../../../assets/icon/Doc/Second.svg";
+import First from "../../../assets/img/Doc/License/First.webp";
+import Second from "../../../assets/img/Doc/License/Second.webp";
 import BgMb from "../../../assets/img/Bg/MobileDiagnosis.png";
 import Bg from "../../../assets/img/Bg/Doc.png";
 

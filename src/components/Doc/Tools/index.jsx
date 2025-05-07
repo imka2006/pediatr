@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import Leandia from "../../../assets/img/Doc/Leandia.png";
-import Litmann from "../../../assets/img/Doc/Litmann.png";
-import Baxter from "../../../assets/img/Doc/Baxter.png";
+import Leandia from "../../../assets/img/Doc/Tools/Leandia.webp";
+import Litmann from "../../../assets/img/Doc/Tools/Litmann.webp";
+import Baxter from "../../../assets/img/Doc/Tools/Baxter.webp";
 import BgMb from "../../../assets/img/Bg/MobileDiagnosis.png";
 import Bg from "../../../assets/img/Bg/Doc.png";
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import Whatsapp from "../../../../assets/icon/Right/Whatsapp.svg";
+import Whatsapp from "../../../../assets/icon/Blog/Whatsapp.webp";
 import Bg from "../../../../assets/img/Bg/Hero.png";
 import BgMb from "../../../../assets/img/Bg/MobileHeart.png";
 import Babe from "../../../../assets/img/right/Top/Babe.png";
@@ -53,7 +53,7 @@ function Top({ setModal }) {
                         Записаться
                     </button>
                     <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src={Whatsapp} alt="Whatsapp" />
+                        <img src={Whatsapp}  alt="Whatsapp" />
                     </a>
                 </div>
                 {window.innerWidth > 700 ? (
