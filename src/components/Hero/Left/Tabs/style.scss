@@ -70,7 +70,6 @@
     @media screen and (max-width: 888px) {
         height: 475px;
         width: 100px;
-        margin-top: -20px;
         .simplebar-content {
             flex-direction: column;
         }
@@ -79,7 +78,6 @@
     @media screen and (max-width: 600px) {
         height: 140px;
         width: 450px;
-        margin-top: -40px;
         .simplebar-content {
             display: flex;
             flex-direction: unset;

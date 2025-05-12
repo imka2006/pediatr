@@ -61,11 +61,11 @@
     @media screen and (max-width: 700px) {
         &__bg {
             width: 115px;
-            transition: 1s;
+            transition: 2s;
         }
         .reviews-main__bg.aos-init.aos-animate {
             width: 160px;
-            transition: 1s;
+            transition: 2s;
         }
     }
 }

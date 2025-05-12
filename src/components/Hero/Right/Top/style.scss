@@ -133,5 +133,8 @@
             width: 100%;
             height: 0;
         }
+         &__bg.aos-init.aos-animate {
+            height: 40%;
+        }
     }
 }

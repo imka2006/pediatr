@@ -107,10 +107,11 @@
             max-width: 100% !important;
             width: 100%;
             height: 0%;
-            transition: 1s;
+            transition: 2s;
         }
         .doc-tools__bg.aos-init.aos-animate {
             height: 30%;
+            transition: 2s;
         }
         &__img {
             margin-top: 55px;

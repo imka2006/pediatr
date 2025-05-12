@@ -135,10 +135,12 @@
         .services-heart__bg {
             width: 100px;
             opacity: 0.4;
+            transition: 1s;
         }
         .services-heart__bg.aos-init.aos-animate {
             width: 215px;
             opacity: 1;
+            transition: 1s;
         }
 
         &__icon {

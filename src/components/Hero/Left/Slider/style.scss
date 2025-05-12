@@ -11,7 +11,6 @@
         transform: translateY(0);
     }
 
-
     &__block {
         padding-top: 40px;
         margin: 0 auto;
@@ -81,18 +80,20 @@
             margin-top: 40px;
         }
     }
-    @media screen and (max-width: 490px) {
+    @media screen and (max-width: 500px) {
         & {
-            width: 280px;
+            width: 360px;
+            margin: 0 auto;
             &__photo {
-                max-width: 230px;
+                max-width: 285px;
                 margin: 0 auto;
                 display: flex;
             }
             &__info {
-                width: 250px;
+                width: 300px;
+                max-width: 300px;
                 box-sizing: border-box;
-                top: 290px;
+                top: 350px;
                 font-size: 13px !important;
             }
             &__text {
@@ -111,6 +112,53 @@
             .hero-swiper__inst,
             .hero-swiper__item {
                 gap: 4px;
+            }
+             .swiper-button-prev:after,
+            .swiper-rtl .swiper-button-next:after {
+                left: -6px;
+                bottom: 60px;
+            }
+            .swiper-button-next:after,
+            .swiper-rtl .swiper-button-prev:after {
+                right: -6px;
+                bottom: 60px;
+            }
+        }
+    }
+    @media screen and (max-width: 400px) {
+        & {
+            width: 280px;
+            &__photo {
+                max-width: 230px;
+                margin: 0 auto;
+                display: flex;
+            }
+            &__info {
+                width: 230px;
+                box-sizing: border-box;
+                top: 290px;
+                font-size: 13px !important;
+            }
+            &__text {
+                margin-top: 95px;
+            }
+           
+            &__list {
+                right: -10px;
+                bottom: 65px;
+                img {
+                    max-width: 80%;
+                }
+            }
+            .swiper-button-prev:after,
+            .swiper-rtl .swiper-button-next:after {
+                left: -15px;
+                bottom: 70px !important;
+            }
+            .swiper-button-next:after,
+            .swiper-rtl .swiper-button-prev:after {
+                right: -15px;
+                bottom: 70px !important;
             }
         }
 
