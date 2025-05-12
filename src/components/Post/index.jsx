@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import AOS from 'aos';
 
 import Profile from "../../assets/icon/Principles/Post/Profile.svg";
 import Like from "../../assets/icon/Principles/Post/Like.svg";
@@ -9,35 +10,40 @@ import Arrow from "../../assets/icon/Principles/Post/Arrow.svg";
 import Dots from "../../assets/icon/Principles/Post/Dots.svg";
 
 import "./style.scss";
+import 'aos/dist/aos.css';
 
 function Post({ img, text, link }) {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
+    // useEffect(() => {
+    //     const node = ref.current;
+    //     if (!node) return;
+
+    //     const observer = new IntersectionObserver(
+    //         ([entry]) => {
+    //             if (entry.isIntersecting) {
+    //                 setIsVisible(true);
+    //                 observer.disconnect(); // полностью отключаем наблюдателя
+    //             }
+    //         },
+    //         { threshold: 0.3 }
+    //     );
+
+    //     observer.observe(node);
+
+    //     return () => {
+    //         observer.disconnect(); // на случай размонтирования
+    //     };
+    // }, []);
+
     useEffect(() => {
-        const node = ref.current;
-        if (!node) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect(); // полностью отключаем наблюдателя
-                }
-            },
-            { threshold: 0.3 }
-        );
-
-        observer.observe(node);
-
-        return () => {
-            observer.disconnect(); // на случай размонтирования
-        };
+        AOS.init();
     }, []);
-
     return (
         <>
-            <div ref={ref} className={`post ${isVisible ? "animate" : ""}`}>
+            <div ref={ref} className={`post `}
+            data-aos="fade-up">
                 <div className="post-head">
                     <div className="post-info">
                         <img src={Profile} alt="profile" />

@@ -1,31 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
+import AOS from 'aos';
 
 import "./style.scss";
+import 'aos/dist/aos.css';
 
 function Schedule() {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
-    useEffect(() => {
-        const node = ref.current;
-        if (!node) return;
+    // useEffect(() => {
+    //     const node = ref.current;
+    //     if (!node) return;
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect(); // полностью отключаем наблюдателя
-                }
-            },
-            { threshold: 0.3 }
-        );
+    //     const observer = new IntersectionObserver(
+    //         ([entry]) => {
+    //             if (entry.isIntersecting) {
+    //                 setIsVisible(true);
+    //                 observer.disconnect(); // полностью отключаем наблюдателя
+    //             }
+    //         },
+    //         { threshold: 0.3 }
+    //     );
 
-        observer.observe(node);
+    //     observer.observe(node);
 
-        return () => {
-            observer.disconnect(); // на случай размонтирования
-        };
-    }, []);
+    //     return () => {
+    //         observer.disconnect(); // на случай размонтирования
+    //     };
+    // }, []);
     // Функция для получения текущего времени в часовом поясе Кыргызстана (Asia/Bishkek)
     const getKyrgyzDate = () => {
         // Берём текущую дату и приводим к часовому поясу Asia/Bishkek
@@ -82,10 +84,14 @@ function Schedule() {
     const statusClass = salonOpen ? "active" : "close";
     const statusText = salonOpen ? "Сейчас открыто" : "Сейчас закрыто";
 
+    useEffect(() => {
+        AOS.init();
+    }, []);
     return (
         <div
             ref={ref}
-            className={`hero-schedule ${isVisible ? "animate" : ""}`}
+            className={`hero-schedule`}
+            data-aos="fade-up"
         >
             <h3 className="hero-schedule__title">График работы</h3>
             <div className="hero-schedule__wrapper">

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import AOS from 'aos';
 
 import Parking from "../../../../assets/icon/Right/Location/parking.svg";
 import twoGis from "../../../../assets/icon/Right/Location/twoGis.svg";
@@ -6,37 +7,42 @@ import googleMap from "../../../../assets/icon/Right/Location/googleMap.svg";
 import yandexMap from "../../../../assets/icon/Right/Location/yandexMap.svg"; 
 
 import "./style.scss"
+import 'aos/dist/aos.css';
 
 function Location() {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
-    useEffect(() => {
-           const node = ref.current;
-           if (!node) return;
+    // useEffect(() => {
+    //        const node = ref.current;
+    //        if (!node) return;
        
-           const observer = new IntersectionObserver(
-               ([entry]) => {
-                   if (entry.isIntersecting) {
-                       setIsVisible(true);
-                       observer.disconnect(); // полностью отключаем наблюдателя
-                   }
-               },
-               { threshold: 0.3 }
-           );
+    //        const observer = new IntersectionObserver(
+    //            ([entry]) => {
+    //                if (entry.isIntersecting) {
+    //                    setIsVisible(true);
+    //                    observer.disconnect(); // полностью отключаем наблюдателя
+    //                }
+    //            },
+    //            { threshold: 0.3 }
+    //        );
        
-           observer.observe(node);
+    //        observer.observe(node);
        
-           return () => {
-               observer.disconnect(); // на случай размонтирования
-           };
-       }, []);
+    //        return () => {
+    //            observer.disconnect(); // на случай размонтирования
+    //        };
+    //    }, []);
 
+    useEffect(() => {
+        AOS.init();
+    }, []);
     return (
         <>
             <div
                 ref={ref}
-                className={`hero-location ${isVisible ? "animate" : ""}`}
+                className={`hero-location `}
+            data-aos="fade-up"
             >
                 {window.innerWidth <= 888 ? (
                     <></>

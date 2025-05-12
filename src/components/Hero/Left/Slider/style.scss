@@ -1,20 +1,16 @@
 .hero-swiper {
     max-width: 460px;
     position: relative;
-    transition: all 0.6s ease;
+    transition: all 0.2s ease;
     opacity: 0;
     transform: translateY(40px);
-    background: #EFF3FE;
+    background: #eff3fe;
 
     &.animate {
         opacity: 1;
         transform: translateY(0);
     }
 
-    &:hover {
-        transform: translateY(-4px);
-        transition: all 0.4s ease;
-    }
 
     &__block {
         padding-top: 40px;
@@ -72,18 +68,24 @@
         font-size: 15px;
         font-weight: 400;
         line-height: 150%;
+        height: 100px;
     }
 
+    @media screen and (max-width: 1295px) {
+        &__text {
+            margin-top: 35px;
+        }
+    }
     @media screen and (max-width: 1015px) {
         &__text {
-            margin-top: 33px;
+            margin-top: 40px;
         }
     }
     @media screen and (max-width: 490px) {
         & {
-            width: 320px;
+            width: 280px;
             &__photo {
-                max-width: 250px;
+                max-width: 230px;
                 margin: 0 auto;
                 display: flex;
             }

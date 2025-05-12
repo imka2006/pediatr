@@ -1,45 +1,57 @@
 import React, { useEffect, useRef, useState } from "react";
+import AOS from "aos";
 
 import First from "../../../assets/img/Doc/License/First.webp";
 import Second from "../../../assets/img/Doc/License/Second.webp";
-import BgMb from "../../../assets/img/Bg/MobileDiagnosis.png";
-import Bg from "../../../assets/img/Bg/Doc.png";
+import Bg from "../../../assets/img/Bg/License.png";
+import BgMb from "../../../assets/img/Bg/MobileLicense.png";
 
 import "./style.scss";
+import "aos/dist/aos.css";
 
 function License() {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
+    const isMobile = window.innerWidth <= 700;
+
+    // useEffect(() => {
+    //     const node = ref.current;
+    //     if (!node) return;
+
+    //     const observer = new IntersectionObserver(
+    //         ([entry]) => {
+    //             if (entry.isIntersecting) {
+    //                 setIsVisible(true);
+    //                 observer.disconnect(); // полностью отключаем наблюдателя
+    //             }
+    //         },
+    //         { threshold: 0.3 }
+    //     );
+
+    //     observer.observe(node);
+
+    //     return () => {
+    //         observer.disconnect(); // на случай размонтирования
+    //     };
+    // }, []);
+
     useEffect(() => {
-        const node = ref.current;
-        if (!node) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect(); // полностью отключаем наблюдателя
-                }
-            },
-            { threshold: 0.3 }
-        );
-
-        observer.observe(node);
-
-        return () => {
-            observer.disconnect(); // на случай размонтирования
-        };
+        AOS.init();
     }, []);
-
     return (
         <>
-            <div
-                ref={ref}
-                className={`doc-license ${isVisible ? "animate" : ""}`}
-            >
-                <img src={Bg} className="doc-license__bg" alt="bg" />
-                <img src={BgMb} className="doc-license__bg color" alt="bg" />
+            <div className={`doc-license`} data-aos="fade-up">
+                {isMobile ? (
+                    <img
+                        data-aos="fade-down-left"
+                        className={`doc-license__bg`}
+                        src={BgMb}
+                        alt="bg"
+                    />
+                ) : (
+                    <img src={Bg} className="doc-license__bg" alt="bg" />
+                )}
                 <div className="doc-license__content">
                     <h3 className="doc-license__title">
                         Наши лицензии и сертификаты

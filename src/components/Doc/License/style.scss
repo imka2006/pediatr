@@ -13,7 +13,8 @@
     overflow: hidden;
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.6s ease;
+    transition: all 0.2s ease;
+    width: 96%;
 
     &.animate {
         opacity: 1;
@@ -22,11 +23,11 @@
     }
 
     &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 36px rgba(138, 173, 255, 0.5);
-        transition: all 0.4s ease;
 
-        .doc-license__bg.color,
+        .doc-license__bg {
+            opacity: 1;
+            width: 260px;
+        }
         .doc-license__icon.color {
             opacity: 1;
         }
@@ -43,10 +44,8 @@
         z-index: -1;
         transition: 0.5s;
         z-index: 1;
-        &.color {
-            opacity: 0;
-            width: 220px;
-        }
+        opacity: 0.4;
+        width: 180px;
     }
 
     &__content {
@@ -86,6 +85,20 @@
             align-items: center;
             text-align: center;
             max-width: unset;
+        }
+        &__bg {
+            right: 0;
+            left: unset;
+            max-width: 100% !important;
+            opacity: .4;
+            transition: 1s;
+        }
+        
+        
+        .doc-license__bg.aos-init.aos-animate {
+            width: 100%;
+            opacity: 1;
+            transition: 1s;
         }
     }
 }

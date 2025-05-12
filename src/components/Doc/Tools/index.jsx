@@ -1,45 +1,65 @@
 import React, { useEffect, useRef, useState } from "react";
+import AOS from 'aos';
 
 import Leandia from "../../../assets/img/Doc/Tools/Leandia.webp";
 import Litmann from "../../../assets/img/Doc/Tools/Litmann.webp";
 import Baxter from "../../../assets/img/Doc/Tools/Baxter.webp";
-import BgMb from "../../../assets/img/Bg/MobileDiagnosis.png";
-import Bg from "../../../assets/img/Bg/Doc.png";
+import Bg from "../../../assets/img/Bg/Tools.png";
+import BgMb from "../../../assets/img/Bg/MobileTools.png";
 
 import "./style.scss";
+import 'aos/dist/aos.css';
 
 function Tools() {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
+    const isMobile = window.innerWidth <= 700;
+    // useEffect(() => {
+    //     const node = ref.current;
+    //     if (!node) return;
+
+    //     const observer = new IntersectionObserver(
+    //         ([entry]) => {
+    //             if (entry.isIntersecting) {
+    //                 setIsVisible(true);
+    //                 observer.disconnect(); // полностью отключаем наблюдателя
+    //             }
+    //         },
+    //         { threshold: 0.3 }
+    //     );
+
+    //     observer.observe(node);
+
+    //     return () => {
+    //         observer.disconnect(); // на случай размонтирования
+    //     };
+    // }, []);
+
     useEffect(() => {
-        const node = ref.current;
-        if (!node) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect(); // полностью отключаем наблюдателя
-                }
-            },
-            { threshold: 0.3 }
-        );
-
-        observer.observe(node);
-
-        return () => {
-            observer.disconnect(); // на случай размонтирования
-        };
+        AOS.init();
     }, []);
-
     return (
         <>
             <div
                 ref={ref}
-                className={`doc-tools ${isVisible ? "animate" : ""}`}
-            >
-                <img src={Bg} className="doc-tools__bg" alt="bg" />
-                <img src={BgMb} className="doc-tools__bg color" alt="bg" />
+                className={`doc-tools`}
+            data-aos="fade-up"
+            >{
+                isMobile ? (
+                    <img
+                    data-aos="fade-down-right"
+                    className={`doc-tools__bg`}
+                    src={BgMb}
+                    alt="bg"
+                />
+                ) : (
+                    <img
+                    className={`doc-tools__bg`}
+                    src={Bg}
+                    alt="bg"
+                />
+                )
+            }
                 <div className="doc-tools__wrapper">
                     <div className="doc-tools__content">
                         <h3 className="doc-tools__title">

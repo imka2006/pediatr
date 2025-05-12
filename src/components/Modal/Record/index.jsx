@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+
 import { IMaskInput } from "react-imask";
 
 import Arrow from "../../../assets/icon/Modal/Arrow.svg";
 import Close from "../../../assets/icon/Modal/Close.svg";
-import Whatsapp from "../../../assets/icon/Right/Whatsapp.svg";
+import Whatsapp from "../../../assets/icon/Blog/Whatsapp.webp";
 import Logo from "../../../assets/icon/Header/logo.svg";
 import Bg from "../../../assets/img/Bg/Modal.png";
+
+import "./style.scss"
 
 function Record({ setModal, setCalendar, finishDate, setFinal }) {
     const [isActive, setIsActive] = useState(localStorage.getItem("specialist") || "Выберите врача");
@@ -123,7 +126,7 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
             </div>
 
             <div className="modal-record__bott">
-                <a href="#" className="modal-record__watsapp" target="_blank" rel="noopener noreferrer">
+                <a href="#" className="modal-record__whatsapp" target="_blank" rel="noopener noreferrer">
                     <img src={Whatsapp} alt="Whatsapp" />
                 </a>
                 <img src={Logo} alt="Логотип" />

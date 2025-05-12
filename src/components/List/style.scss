@@ -9,7 +9,7 @@
     box-shadow: 0 4px 20px rgba(138, 173, 255, 0.5);
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.6s ease;
+    transition: all 0.2s ease;
 
     &.animate {
         opacity: 1;
@@ -17,9 +17,6 @@
         box-shadow: 0 8px 30px rgba(138, 173, 255, 0.4);
     }
     &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 36px rgba(138, 173, 255, 0.5);
-        transition: all 0.4s ease;
     }
 
     &.another {
@@ -51,7 +48,7 @@
         left: -5px;
         top: -5px;
         z-index: 0;
-        &.another  {
+        &.another {
             left: 1px;
             top: 2px;
         }
@@ -77,12 +74,15 @@
         border: 1px solid #dae9ff;
         padding: 16px 12px;
         border-radius: 12px;
-        transition: all 0.4s ease;
+        transition: all 0.2s ease;
+        &.animate {
+            animation: fadeIn 1s ease; // пример
+        }
 
         &:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 25px rgba(138, 173, 255, 0.5);
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
 
             .list-bg {
                 opacity: 1;
@@ -144,6 +144,15 @@
         }
         &-btn {
             width: 120px;
+        }
+        &-item.animate {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 10px rgba(138, 173, 255, 0.5);
+            transition: all 0.8s ease;
+            .list-bg {
+                opacity: 1;
+                transition: 0.8s;
+            }
         }
     }
     @media screen and (max-width: 480px) {

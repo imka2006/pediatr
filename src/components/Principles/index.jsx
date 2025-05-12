@@ -4,15 +4,15 @@ import List from "../List";
 import First from "../../assets/img/Principles/First.png";
 import Second from "../../assets/img/Principles/Second.png";
 
-import Queue from "../../assets/icon/Principles/List/Queue.svg";
-import Conect from "../../assets/icon/Principles/List/Conect.svg";
-import Necessary from "../../assets/icon/Principles/List/Necessary.svg";
-import Safety from "../../assets/icon/Principles/List/Safety.svg";
+import Queue from "../../assets/icon/List/Queue.svg";
+import Conect from "../../assets/icon/List/Conect.svg";
+import Necessary from "../../assets/icon/List/Necessary.svg";
+import Safety from "../../assets/icon/List/Safety.svg";
 
-import bgQueue from "../../assets/icon/Principles/List/bgQueue.svg";
-import bgConect from "../../assets/icon/Principles/List/bgConect.svg";
-import bgNecessary from "../../assets/icon/Principles/List/bgNecessary.svg";
-import bgSafety from "../../assets/icon/Principles/List/bgSafety.svg";
+import bgQueue from "../../assets/icon/List/bgQueue.svg";
+import bgConect from "../../assets/icon/List/bgConect.svg";
+import bgNecessary from "../../assets/icon/List/bgNecessary.svg";
+import bgSafety from "../../assets/icon/List/bgSafety.svg";
 
 import Consultation from "../../assets/icon/Services/Price/Consultation.svg";
 import Drip from "../../assets/icon/Services/Price/Drip.svg";
@@ -117,7 +117,7 @@ function Principles() {
                         {window.innerWidth < 700 ? (
                             <List
                                 items={mobile}
-                                animation={"false"}
+                                position={true}
                                 title="Стоимость услуг"
                             />
                         ) : (
@@ -125,7 +125,7 @@ function Principles() {
                         )}
                         <List
                             items={list}
-                            animation={"true"}
+                            position={false}
                             title="Основные принципы работы"
                         />
                     </div>

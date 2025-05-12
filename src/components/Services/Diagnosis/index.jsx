@@ -1,47 +1,88 @@
 import React, { useEffect, useRef, useState } from "react";
+import AOS from 'aos';
 import Icon from "../../../assets/icon/Services/Diagnosis/icon.svg";
 import MobileIcon from "../../../assets/icon/Services/Diagnosis/MobileIcon.svg";
 import Check from "../../../assets/icon/Services/Diagnosis/check.svg";
-import Bg from "../../../assets/img/Bg/Diagnosis.png";
-import MobileBg from "../../../assets/img/Bg/MobileDiagnosis.png";
+import Bg from "../../../assets/img/Bg/MobileDiagnosis.png";
 
 import "./style.scss";
+import 'aos/dist/aos.css';
 
 function Diagnosis() {
     const ref = useRef(null);
+    const imgRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
+    const isMobile = window.innerWidth <= 700;
+
+    // useEffect(() => {
+    //     const node = ref.current;
+    //     if (!node) return;
+
+    //     const observer = new IntersectionObserver(
+    //         ([entry]) => {
+    //             if (entry.isIntersecting) {
+    //                 setIsVisible(true);
+    //                 observer.disconnect(); // полностью отключаем наблюдателя
+    //             }
+    //         },
+    //         { threshold: 0.3 }
+    //     );
+
+    //     observer.observe(node);
+
+    //     return () => {
+    //         observer.disconnect(); // на случай размонтирования
+    //     };
+    // }, []);
+
+    // useEffect(() => {
+    //     const node = imgRef.current;
+    //     if (!node || !isMobile) return;
+
+    //     const observer = new IntersectionObserver(
+    //         ([entry]) => {
+    //             if (entry.isIntersecting) {
+    //                 node.classList.add("animate");
+    //             } else {
+    //                 node.classList.remove("animate");
+    //             }
+    //         },
+    //         {
+    //             threshold: 0.3,
+    //         }
+    //     );
+
+    //     observer.observe(node);
+    //     return () => observer.disconnect();
+    // }, [isMobile]);
 
     useEffect(() => {
-        const node = ref.current;
-        if (!node) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect(); // полностью отключаем наблюдателя
-                }
-            },
-            { threshold: 0.3 }
-        );
-
-        observer.observe(node);
-
-        return () => {
-            observer.disconnect(); // на случай размонтирования
-        };
+        AOS.init();
     }, []);
     return (
         <div
             ref={ref}
-            className={`services-diagnosis ${isVisible ? "animate" : ""}`}
+            className={`services-diagnosis`}
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
         >
-            <img className="services-diagnosis__bg" src={Bg} alt="bg" />
-            <img
-                className="services-diagnosis__bg color"
-                src={MobileBg}
-                alt="bg"
-            />
+             {
+                            isMobile ? (
+                                <img
+                                data-aos="fade-down-right"
+                                className={`services-diagnosis__bg`}
+                                src={Bg}
+                                alt="bg"
+                            />
+                            ) : (
+                                <img
+                                className={`services-diagnosis__bg`}
+                                src={Bg}
+                                alt="bg"
+                            />
+                            )
+                        }
+            
             <div className="services-diagnosis__head">
                 <h4 className="services-diagnosis__title">
                     Мы ставим точные диагнозы

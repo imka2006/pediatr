@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import AOS from "aos";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination, Navigation, EffectCoverflow } from "swiper/modules";
 
 import Aygerim from "../../../../assets/img/left/Slider/aygerim.png";
 import Inst from "../../../../assets/icon/Left/Slider/inst.svg";
@@ -10,6 +11,8 @@ import Commas from "../../../../assets/icon/Left/Slider/commas.svg";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
+import "aos/dist/aos.css";
 
 import "./style.scss";
 
@@ -19,8 +22,6 @@ function Slider({ selectedTab }) {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
-
-   
     // Массивы отделяем по категориям
     const pediarts = [
         {
@@ -109,38 +110,52 @@ function Slider({ selectedTab }) {
         }
     }, [selectedTab]);
 
-    
-     useEffect(() => {
-          const node = ref.current;
-          if (!node) return;
-      
-          const observer = new IntersectionObserver(
-              ([entry]) => {
-                  if (entry.isIntersecting) {
-                      setIsVisible(true);
-                      observer.disconnect(); // полностью отключаем наблюдателя
-                  }
-              },
-              { threshold: 0.3 }
-          );
-      
-          observer.observe(node);
-      
-          return () => {
-              observer.disconnect(); // на случай размонтирования
-          };
-      }, []);
+    //  useEffect(() => {
+    //       const node = ref.current;
+    //       if (!node) return;
 
-    
+    //       const observer = new IntersectionObserver(
+    //           ([entry]) => {
+    //               if (entry.isIntersecting) {
+    //                   setIsVisible(true);
+    //                   observer.disconnect(); // полностью отключаем наблюдателя
+    //               }
+    //           },
+    //           { threshold: 0.3 }
+    //       );
+
+    //       observer.observe(node);
+
+    //       return () => {
+    //           observer.disconnect(); // на случай размонтирования
+    //       };
+    //   }, []);
+
+    useEffect(() => {
+        AOS.init();
+    }, []);
 
     return (
-        <div ref={ref} className={`hero-swiper ${isVisible ? "animate" : ""}`}>
+        <div
+            className={`hero-swiper ${isVisible ? "animate" : ""}`}
+            data-aos="fade-up"
+        >
             <Swiper
-                ref={swiperRef}
+            ref={swiperRef}
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
                 slidesPerView={1}
                 pagination={true}
                 navigation={true}
-                modules={[Pagination, Navigation]}
+                coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: false,
+                }}
+                modules={[Pagination, Navigation, EffectCoverflow]}
                 className="hero-slider"
             >
                 {currentData.map((item) => (

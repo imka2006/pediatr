@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import AOS from 'aos';
 
 import Pediatr from "../../../../assets/icon/Left/Tabs/pediatr.webp";
 import ChildNeurologist from "../../../../assets/icon/Left/Tabs/childNeurologist.webp";
@@ -10,6 +11,7 @@ import 'simplebar-react/dist/simplebar.min.css';
 
 
 import "./style.scss";
+import 'aos/dist/aos.css';
 
 function Tabs({ onTabClick }) {
     const [active, setActive] = useState(0);
@@ -17,26 +19,26 @@ function Tabs({ onTabClick }) {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
-   useEffect(() => {
-          const node = ref.current;
-          if (!node) return;
+  //  useEffect(() => {
+  //         const node = ref.current;
+  //         if (!node) return;
       
-          const observer = new IntersectionObserver(
-              ([entry]) => {
-                  if (entry.isIntersecting) {
-                      setIsVisible(true);
-                      observer.disconnect(); // полностью отключаем наблюдателя
-                  }
-              },
-              { threshold: 0.3 }
-          );
+  //         const observer = new IntersectionObserver(
+  //             ([entry]) => {
+  //                 if (entry.isIntersecting) {
+  //                     setIsVisible(true);
+  //                     observer.disconnect(); // полностью отключаем наблюдателя
+  //                 }
+  //             },
+  //             { threshold: 0.3 }
+  //         );
       
-          observer.observe(node);
+  //         observer.observe(node);
       
-          return () => {
-              observer.disconnect(); // на случай размонтирования
-          };
-      }, []);
+  //         return () => {
+  //             observer.disconnect(); // на случай размонтирования
+  //         };
+  //     }, []);
 
       const list = [
         { id: 0, name: "Педиатр", img: Pediatr },
@@ -48,8 +50,12 @@ function Tabs({ onTabClick }) {
       ];
       
 
+    useEffect(() => {
+        AOS.init();
+    }, []);
     return (
-        <SimpleBar className={`hero-tabs ${isVisible ? "animate" : ""}`}>
+        <SimpleBar className={`hero-tabs ${isVisible ? "animate" : ""}`}
+            data-aos="fade-up">
         {list.map((item, index) => (
           <div
             key={index}
