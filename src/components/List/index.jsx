@@ -67,7 +67,6 @@ function List({ items, title, position }) {
         {items.map((item, index) => (
           <div
             key={item.id}
-            ref={(el) => (itemRefs.current[index] = el)} // Привязываем реф к каждому list-item
             className="list-item"
           >
             <div className="list-content">

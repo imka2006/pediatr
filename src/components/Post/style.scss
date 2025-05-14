@@ -1,5 +1,5 @@
 .post {
-    padding: 10px;
+    padding: 10px 10px 20px;
     border-radius: 20px;
     background: #fff;
     max-width: 310px;
@@ -16,9 +16,6 @@
         opacity: 1;
         transform: translateY(0);
         box-shadow: 0 8px 30px rgba(138, 173, 255, 0.4);
-    }
-
-    &:hover {
     }
 
     &-image {
@@ -76,6 +73,7 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        margin-top: auto;
     }
     @media screen and (max-width: 480px) {
         max-width: unset;

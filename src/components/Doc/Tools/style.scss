@@ -116,6 +116,11 @@
         &__img {
             margin-top: 55px;
         }
+        &:hover {
+              .doc-tools__bg {
+            width: 100%;
+        }
+        }
     }
     @media screen and (max-width: 490px) {
         .doc-tools__bg.aos-init.aos-animate {
