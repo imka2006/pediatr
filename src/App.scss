@@ -10,11 +10,17 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
-
+.dna {
+    position: fixed;
+    z-index: -2;
+    left: 0;
+    top: 0;
+}
 a {
     text-decoration: none;
     color: initial;
 }
+
 ul {
     list-style: none;
 }
@@ -45,4 +51,3 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
-

@@ -9,40 +9,45 @@ import Reviews from "./components/Reviews";
 import Modal from "./components/Modal";
 import Blog from "./components/Blog";
 
+import MainBg from "./assets/img/Bg/Main.webp";
+
 import "./App.scss";
 
 function App() {
-  const [modal, setModal] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 700);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 700);
+    };
+
     window.addEventListener("resize", handleResize);
 
-    const applyAnimation = (selector, delay) => {
+    // Анимация названий в блоге
+    const animateElement = (selector, delay) => {
       setTimeout(() => {
         const el = document.querySelector(selector);
         if (el) el.classList.add("nonstop");
       }, delay);
     };
 
-    applyAnimation(".blog-name.first", 3500);
-    applyAnimation(".blog-name.second", 6500);
+    animateElement(".blog-name.first", 3500);
+    animateElement(".blog-name.second", 6500);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <>
       <Header />
-      <Hero setModal={setModal} />
+      <Hero setModal={setModalOpen} />
+      <img className="dna" src={MainBg} alt="DNA background" />
       <Services />
       <Principles />
       <Doc />
       <Reviews />
-      {modal && <Modal setModal={setModal} />}
+      {modalOpen && <Modal setModal={setModalOpen} />}
       {isMobile && <Blog />}
     </>
   );

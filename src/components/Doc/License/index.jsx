@@ -1,74 +1,44 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 
 import First from "../../../assets/img/Doc/License/First.webp";
 import Second from "../../../assets/img/Doc/License/Second.webp";
-import Bg from "../../../assets/img/Bg/License.png";
-import BgMb from "../../../assets/img/Bg/MobileLicense.png";
+import Bg from "../../../assets/img/Bg/License.webp";
+import BgMb from "../../../assets/img/Bg/MobileLicense.webp";
 
-import "./style.scss";
 import "aos/dist/aos.css";
+import "./style.scss";
 
 function License() {
-    const ref = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
 
-    const isMobile = window.innerWidth <= 700;
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
-    // useEffect(() => {
-    //     const node = ref.current;
-    //     if (!node) return;
+  return (
+    <div className="doc-license" data-aos="fade-up">
+      <img
+        src={isMobile ? BgMb : Bg}
+        alt="background"
+        className="doc-license__bg"
+        data-aos={isMobile ? "fade-down-left" : undefined}
+      />
 
-    //     const observer = new IntersectionObserver(
-    //         ([entry]) => {
-    //             if (entry.isIntersecting) {
-    //                 setIsVisible(true);
-    //                 observer.disconnect(); // полностью отключаем наблюдателя
-    //             }
-    //         },
-    //         { threshold: 0.3 }
-    //     );
+      <div className="doc-license__content">
+        <h3 className="doc-license__title">Наши лицензии и сертификаты</h3>
+        <p className="doc-license__text">
+          Вы можете быть уверены, что ваш ребенок в надёжных руках, а наша клиника
+          работает в полном соответствии с законодательством и медицинскими нормами.
+        </p>
+      </div>
 
-    //     observer.observe(node);
-
-    //     return () => {
-    //         observer.disconnect(); // на случай размонтирования
-    //     };
-    // }, []);
-
-    useEffect(() => {
-        AOS.init();
-    }, []);
-    return (
-        <>
-            <div className={`doc-license`} data-aos="fade-up">
-                {isMobile ? (
-                    <img
-                        data-aos="fade-down-left"
-                        className={`doc-license__bg`}
-                        src={BgMb}
-                        alt="bg"
-                    />
-                ) : (
-                    <img src={Bg} className="doc-license__bg" alt="bg" />
-                )}
-                <div className="doc-license__content">
-                    <h3 className="doc-license__title">
-                        Наши лицензии и сертификаты
-                    </h3>
-                    <p className="doc-license__text">
-                        Вы можете быть уверены, что ваш ребенок в надежных
-                        руках, а наша клиника работает в полном соответствии с
-                        законодательством и медицинскими нормами.
-                    </p>
-                </div>
-                <div className="doc-license__images">
-                    <img src={First} alt="license" />
-                    <img src={Second} alt="license" />
-                </div>
-            </div>
-        </>
-    );
+      <div className="doc-license__images">
+        <img src={First} alt="license 1" />
+        <img src={Second} alt="license 2" />
+      </div>
+    </div>
+  );
 }
 
 export default License;

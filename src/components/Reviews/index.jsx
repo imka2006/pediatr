@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import axios from "axios";
 import Cart from "./Cart";
 import TwoGis from "./TwoGis";
@@ -51,10 +50,32 @@ async function fetchFiveStarReviews() {
   return reviews5;
 }
 
+const getBatch = (data, index) => {
+  const result = [];
+
+  if (index === 0) {
+    // первая партия: 8 отзывов, ширина начинается со второго элемента widthList
+    for (let i = 0; i < 8 && i < data.length; i++) {
+      const width = widthList[i + 1] || "310";
+      result.push({ ...data[i], width });
+    }
+  } else {
+    // остальные партии: по 9 отзывов
+    const start = 8 + (index - 1) * 9;
+    const end = start + 9;
+    for (let i = start; i < end && i < data.length; i++) {
+      const width = widthList[(i + 1) % widthList.length] || "310";
+      result.push({ ...data[i], width });
+    }
+  }
+
+  return result;
+};
+
 function Reviews() {
   const [reviews, setReviews] = useState([]);
-  const [batches, setBatches] = useState([]); // список отображаемых отзывов
-  const [batchIndex, setBatchIndex] = useState(0); // индекс партии
+  const [batches, setBatches] = useState([]);
+  const [batchIndex, setBatchIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const observerRef = useRef(null);
 
@@ -62,8 +83,7 @@ function Reviews() {
     fetchFiveStarReviews()
       .then((data) => {
         setReviews(data);
-        const initialBatch = getBatch(data, 0);
-        setBatches(initialBatch);
+        setBatches(getBatch(data, 0));
         setLoading(false);
       })
       .catch((err) => {
@@ -73,9 +93,11 @@ function Reviews() {
   }, []);
 
   useEffect(() => {
+    if (loading) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !loading) {
+        if (entry.isIntersecting) {
           const nextIndex = batchIndex + 1;
           const nextBatch = getBatch(reviews, nextIndex);
 
@@ -95,36 +117,6 @@ function Reviews() {
     };
   }, [batchIndex, reviews, loading]);
 
-// 👇 корректная функция getBatch
-const getBatch = (data, index) => {
-  const result = [];
-
-  if (index === 0) {
-    // Первая партия: 8 элементов начиная с width[1]
-    for (let i = 0; i < 8 && i < data.length; i++) {
-      result.push({
-        ...data[i],
-        width: widthList[i + 1] || "310", // width[1] до width[8]
-      });
-    }
-  } else {
-    // Остальные партии: по 9 штук
-    const start = 8 + (index - 1) * 9;
-    const end = start + 9;
-
-    for (let i = start; i < end && i < data.length; i++) {
-      const widthIndex = i + 1; // чтобы продолжать после width[8]
-      result.push({
-        ...data[i],
-        width: widthList[widthIndex % widthList.length] || "310",
-      });
-    }
-  }
-
-  return result;
-};
-
-
   return (
     <section className="reviews">
       <div className="container">
@@ -133,11 +125,9 @@ const getBatch = (data, index) => {
           {loading ? (
             <p>Загрузка отзывов...</p>
           ) : (
-            batches.map((item) => (
-              <Cart key={item.id} item={item} wid={item.width} />
-            ))
+            batches.map((item) => <Cart key={item.id} item={item} wid={item.width} />)
           )}
-          <div ref={observerRef} style={{ height: 1, minHeight: "10px" }}></div>
+          <div ref={observerRef} style={{ height: 1, minHeight: "10px" }} />
         </div>
       </div>
     </section>

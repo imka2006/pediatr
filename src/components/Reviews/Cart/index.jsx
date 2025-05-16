@@ -5,104 +5,75 @@ import Arrow from "../../../assets/icon/Reviews/Arrow.svg";
 import "./style.scss";
 
 function Cart({ item, wid }) {
-    const [showFullText, setShowFullText] = useState(false);
-    const [displayText, setDisplayText] = useState(item.text);
-    const textRef = useRef(null);
-    const ref = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
+  const [displayText, setDisplayText] = useState(item.text);
+  const textRef = useRef(null);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            {
-                threshold: 0.3,
-            }
-        );
-    
-        const node = ref.current;
-    
-        // Добавляем задержку перед observe
-        const timeout = setTimeout(() => {
-            if (node) observer.observe(node);
-        }, 50);
-    
-        return () => {
-            clearTimeout(timeout);
-            if (node) observer.unobserve(node);
-        };
-    }, []);
-    
+  const formatDate = (dateString) =>
+    new Date(dateString).toLocaleDateString("ru-RU", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
 
-    const formatDate = (dateString) =>
-        new Date(dateString).toLocaleDateString("ru-RU", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-        });
+  const isLongText = item.text.split(" ").length > 5;
 
-    const isLongText = item.text.split(" ").length > 5;
+  useEffect(() => {
+    if (showFullText || !isLongText) {
+      setDisplayText(item.text);
+      return;
+    }
 
-    useEffect(() => {
-        if (showFullText || !isLongText) {
-            setDisplayText(item.text);
-            return;
-        }
+    const element = textRef.current;
+    const originalText = item.text;
+    let truncatedText = originalText;
+    element.textContent = truncatedText;
 
-        const element = textRef.current;
-        const originalText = item.text;
-        let truncatedText = originalText;
-        element.textContent = truncatedText;
+    // Усечение текста, если высота больше 80px
+    while (element.scrollHeight > 80 && truncatedText.length > 0) {
+      truncatedText = truncatedText.slice(0, -1);
+      element.textContent = truncatedText + "...";
+    }
 
-        // Проверяем, превышает ли высота элемента 80px
-        while (element.scrollHeight > 80 && truncatedText.length > 0) {
-            truncatedText = truncatedText.slice(0, -1); // Убираем по одному символу
-            element.textContent = truncatedText + "...";
-        }
+    setDisplayText(truncatedText + "...");
+  }, [showFullText, item.text, isLongText]);
 
-        setDisplayText(truncatedText + "...");
-    }, [showFullText, item.text, isLongText]);
-
-    return (
-        <div
-            ref={ref}
-            className={`reviews-block ${wid} ${isVisible ? "animate" : ""}`}
+  return (
+    <div
+      className={`reviews-block ${wid}`}
+      data-aos="fade-up"
+      data-aos-duration="600"
+    >
+      <h4 className="reviews-block__name">{item.user_name}</h4>
+      <div className="reviews-block__star">
+        {Array(item.rating)
+          .fill()
+          .map((_, index) => (
+            <img key={index} src={LilStar} alt="star" />
+          ))}
+      </div>
+      <div className="reviews-block__date">{formatDate(item.date_created)}</div>
+      <div
+        className="reviews-block__text"
+        ref={textRef}
+        style={{
+          maxHeight: showFullText ? "none" : "80px",
+          overflow: "hidden",
+        }}
+      >
+        {displayText}
+      </div>
+      {isLongText && !showFullText && (
+        <button
+          className="reviews-block__link"
+          onClick={() => setShowFullText(true)}
+          type="button"
         >
-            <h4 className="reviews-block__name">
-                {item.user_name}
-            </h4>
-            <div className="reviews-block__star">
-                {Array(item.rating)
-                    .fill()
-                    .map((_, index) => (
-                        <img key={index} src={LilStar} alt="star" />
-                    ))}
-            </div>
-            <div className="reviews-block__date">
-                {formatDate(item.date_created)}
-            </div>
-            <div
-                className="reviews-block__text"
-                ref={textRef}
-                style={{
-                    maxHeight: "70px",
-                    overflow: "hidden",
-                }}
-            >
-                {displayText}
-            </div>
-            {isLongText && !showFullText && (
-                <button
-                    className="reviews-block__link"
-                >
-                    Читать полностью <img src={Arrow} alt="arrow" />
-                </button>
-            )}
-        </div>
-    );
+          Читать полностью <img src={Arrow} alt="arrow" />
+        </button>
+      )}
+    </div>
+  );
 }
 
 export default Cart;

@@ -32,7 +32,9 @@ function Post({ img, text, link }) {
                 </div>
                 <img src={Dots} alt="dots" />
             </div>
-            <img src={img} className="post-image" alt="post" />
+            <div className="post-img__wrapper">
+                <img src={img} className="post-image" alt="post" />
+            </div>
             <div className="post-btn">
                 <div className="post-inner">
                     <img src={Like} alt="Like" />

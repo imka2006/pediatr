@@ -6,17 +6,24 @@ import Arrow from "../../../assets/icon/Modal/Arrow.svg";
 import Close from "../../../assets/icon/Modal/Close.svg";
 import Whatsapp from "../../../assets/icon/Blog/Whatsapp.webp";
 import Logo from "../../../assets/icon/Header/logo.svg";
-import Bg from "../../../assets/img/Bg/Modal.png";
+import Bg from "../../../assets/img/Bg/Modal.webp";
 
-import "./style.scss"
+import "./style.scss";
 
 function Record({ setModal, setCalendar, finishDate, setFinal }) {
-    const [isActive, setIsActive] = useState(localStorage.getItem("specialist") || "Выберите врача");
+    const [isActive, setIsActive] = useState(
+        localStorage.getItem("specialist") || "Выберите врача"  
+    );
     const [isShow, setShow] = useState(false);
     const [name, setName] = useState(localStorage.getItem("name") || "");
     const [phone, setPhone] = useState(localStorage.getItem("phone") || "");
 
-    const list = ["Педиатр", "Детский уролог", "Детский невролог", "Неонатолог"];
+    const list = [
+        "Педиатр",
+        "Детский уролог",
+        "Детский невролог",
+        "Неонатолог",
+    ];
 
     // сохраняем данные в localStorage при каждом изменении
     useEffect(() => {
@@ -38,23 +45,57 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
     }, [isActive]);
 
     // очистка
-    const handleSubmit = () => {
-        // можно добавить валидацию тут
+    const handleSubmit = (e) => {
+    e.preventDefault();
 
-        localStorage.removeItem("name");
-        localStorage.removeItem("phone");
-        localStorage.removeItem("specialist");
+    if (!name.trim()) {
+        alert("Введите имя");
+        return;
+    }
 
-        setName("");
-        setPhone("");
-        setIsActive("Выберите врача");
+    if (!phone || phone.length < 18) {
+        alert("Введите корректный номер телефона ");
+        return;
+    }
 
-        localStorage.removeItem("finishDate");
-        setFinal(true)
+    if (isActive === "Выберите врача") {
+        alert("Выберите врача");
+        return;
+    }
+
+    if (!finishDate || finishDate.length === 0) {
+        alert("Выберите дату и время");
+        return;
+    }
+
+    // очищаем данные
+    localStorage.removeItem("name");
+    localStorage.removeItem("phone");
+    localStorage.removeItem("specialist");
+    localStorage.removeItem("finishDate");
+
+    setName("");
+    setPhone("");
+    setIsActive("Выберите врача");
+    setFinal(true);
+};
+
+
+    const onClick = (item) => {
+        setIsActive(item);
+        setShow(false);
     };
-
     return (
-        <form className="modal-record">
+        <form onSubmit={handleSubmit} className="modal-record">
+            {isShow && (
+                <ul className="modal-record__list">
+                    {list.map((item) => (
+                        <li onClick={() => onClick(item)} key={item}>
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            )}
             <img
                 src={Close}
                 alt="Закрыть"
@@ -64,16 +105,12 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
             <h2 className="modal-record__title">Записаться на прием</h2>
 
             <div className="modal-record__wrapper">
-                <label className="modal-record__label acardeon another" onClick={() => setShow(!isShow)}>
+                <label
+                    className="modal-record__label acardeon another"
+                    onClick={() => setShow(!isShow)}
+                >
                     {isActive}
                     <img src={Arrow} alt="Стрелка" />
-                    {isShow && (
-                        <ul className="modal-record__list">
-                            {list.map(item => (
-                                <li onClick={() => setIsActive(item)} key={item}>{item}</li>
-                            ))}
-                        </ul>
-                    )}
                 </label>
 
                 <label className="modal-record__label">
@@ -81,7 +118,7 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
                         type="text"
                         placeholder="Имя*"
                         className="modal-record__input"
-                        required
+                        // required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
@@ -89,14 +126,22 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
             </div>
 
             <div className="modal-record__wrapper">
-                <label className="modal-record__label acardeon" onClick={() => setCalendar(true)}>
-                  {!finishDate || finishDate.length === 0
-                        ? (() => {
-                            const stored = JSON.parse(localStorage.getItem("finishDate"));
-                            return stored && stored.length ? stored[0].slice(0, 25) : "Выберите дату и время";
+                <label
+                    className="modal-record__label acardeon"
+                    onClick={() => setCalendar(true)}
+                >
+                    {!finishDate || finishDate.length === 0 ? (
+                        (() => {
+                            const stored = JSON.parse(
+                                localStorage.getItem("finishDate")
+                            );
+                            return stored && stored.length
+                                ? stored[0].slice(0, 25)
+                                : "Выберите дату и время";
                         })()
-                        : <div>{finishDate[0].slice(0, 25)}</div>
-                    }
+                    ) : (
+                        <div>{finishDate[0].slice(0, 25)}</div>
+                    )}
                     <img src={Arrow} alt="Стрелка" />
                 </label>
 
@@ -106,27 +151,39 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
                         placeholder="Телефон*"
                         className="modal-record__input"
                         value={phone}
-                        required
+                        // required
                         onAccept={(value) => setPhone(value)}
                     />
                 </label>
             </div>
 
             <div className="modal-record__info">
-                <button className="modal-record__btn" onClick={handleSubmit}>Отправить</button>
+                <button className="modal-record__btn">
+                    Отправить
+                </button>
                 <p className="modal-record__text">
-                    Нажимая на кнопку, вы даете согласие на обработку персональных данных
+                    Нажимая на кнопку, вы даете согласие на обработку
+                    персональных данных
                 </p>
             </div>
 
             <div className="modal-record__call">
                 Записаться по телефону:
-                <a href="tel:+996508766555" className="modal-record__phone">0 508 766 555</a>
-                <a href="tel:+996550766555" className="modal-record__phone">0 550 766 555</a>
+                <a href="tel:+996508766555" className="modal-record__phone">
+                    0 508 766 555
+                </a>
+                <a href="tel:+996550766555" className="modal-record__phone">
+                    0 550 766 555
+                </a>
             </div>
 
             <div className="modal-record__bott">
-                <a href="#" className="modal-record__whatsapp" target="_blank" rel="noopener noreferrer">
+                <a
+                    href="#"
+                    className="modal-record__whatsapp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     <img src={Whatsapp} alt="Whatsapp" />
                 </a>
                 <img src={Logo} alt="Логотип" />

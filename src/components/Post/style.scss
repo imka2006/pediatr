@@ -18,6 +18,14 @@
         box-shadow: 0 8px 30px rgba(138, 173, 255, 0.4);
     }
 
+    &-img__wrapper {
+        height: 300px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     &-image {
         max-width: 100%;
     }

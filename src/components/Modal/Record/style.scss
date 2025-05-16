@@ -36,10 +36,12 @@
         border: 1px solid #249dc0;
         background: #fff;
         border-radius: 20px;
-        z-index: 1;
-        left: 0;
-        top: 45px;
+        z-index: 9999;
+        background: #fff;
+        left: 40px;
+        top: 160px;
         cursor: default;
+
         li {
             max-width: fit-content;
             cursor: pointer;
@@ -50,6 +52,8 @@
         display: flex;
         align-items: center;
         gap: 20px;
+        position: sticky;
+        z-index: 2;
         &:first-of-type {
             margin-bottom: 12px;
         }
@@ -70,7 +74,10 @@
 
         &.another {
             position: relative;
+
+            overflow: visible;
             overflow: unset;
+            z-index: -1;
         }
 
         &.acardeon {
@@ -97,6 +104,8 @@
         margin-top: 12px;
         max-width: 288px;
         margin-left: auto;
+        z-index: 2;
+        position: sticky;
     }
     &__text {
         max-width: 225px;
@@ -120,6 +129,8 @@
         font-size: 14px;
         color: #000;
         margin-top: 90px;
+        z-index: 2;
+        position: sticky;
 
         a {
             font-weight: 500;
@@ -131,6 +142,7 @@
         align-items: flex-end;
         justify-content: space-between;
         position: relative;
+        z-index: 1;
 
         a {
             height: 40px;
@@ -144,7 +156,7 @@
     }
     &__whatsapp {
         img {
-            max-width: 60px;
+            max-width: 40px;
         }
     }
 
@@ -160,6 +172,9 @@
             }
             &__title {
                 font-size: 24px;
+            }
+            &__list {
+                top: 150px;
             }
         }
     }

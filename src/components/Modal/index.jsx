@@ -14,11 +14,11 @@ function Modal({ setModal }) {
     const onClose = () => {
         if (calendar) setCalendar(false);
         if (!calendar) setModal(false);
-
+        if (final) setFinal(false)
     };
 
     return (
-        <div className="modal">
+        <section className="modal">
             <div onClick={onClose} className="modal-bg"></div>
             <div className="modal-wrapper">
                 {final ? (
@@ -34,7 +34,7 @@ function Modal({ setModal }) {
                     />
                 )}
             </div>
-        </div>
+        </section>
     );
 }
 

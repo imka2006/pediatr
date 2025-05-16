@@ -1,4 +1,3 @@
-import React from "react";
 import License from "./License";
 import Tools from "./Tools";
 

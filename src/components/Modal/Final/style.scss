@@ -1,13 +1,12 @@
 .final {
     background: #fff;
     border-radius: 20px;
-    max-width: 320px;
-    width: 100%;
+    width: 320px;
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
-    color: #1E1E1E;
+    color: #1e1e1e;
     padding: 40px 20px;
     box-sizing: border-box;
 
@@ -33,5 +32,14 @@
         border: 1px solid #000;
         border-radius: 50px;
         cursor: pointer;
+    }
+
+    @media screen and (max-width: 450px) {
+        & {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 }
