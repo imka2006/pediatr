@@ -1,0 +1,47 @@
+.cookie-full {
+    padding: 40px;
+    max-width: 560px;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 20px;
+
+    &__title {
+        font-weight: 700;
+        font-size: 36px;
+        color: #000;
+    }
+
+    &__text {
+        font-size: 15px;
+        font-weight: 400;
+        color: #000;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    &__wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__blue {
+        color: #fff;
+        background: #249dc0;
+        border: 1px solid #249dc0;
+        transition: 0.3s;
+        width: 135px;
+        height: 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        margin: 0 auto;
+
+        &:hover {
+            transition: 0.3s;
+            color: #1b8bac;
+            background: #fff;
+        }
+    }
+}
