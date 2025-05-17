@@ -112,7 +112,6 @@ const doctorsData = {
             id: 0,
             img: Aida,
             name: "Ахметова Аида Ибраимовна",
-            category: "Неонатолог",
             exp: "3 лет+",
             link: "https://www.instagram.com/kendricklamar/",
             price: "1000",
