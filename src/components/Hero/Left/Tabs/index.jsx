@@ -17,8 +17,6 @@ function Tabs({ onTabClick }) {
     { id: 1, name: "Детский невролог", img: ChildNeurologist },
     { id: 2, name: "Детский уролог", img: ChildUrologist },
     { id: 3, name: "Неонатолог", img: Neotologist },
-    { id: 4, name: "Детский уролог", img: ChildUrologist },
-    { id: 5, name: "Неонатолог", img: Neotologist },
   ];
 
   useEffect(() => {

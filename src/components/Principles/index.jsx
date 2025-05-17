@@ -23,7 +23,7 @@ import Blood from "../../assets/icon/Services/Price/Blood.svg";
 import "./style.scss";
 
 const TOKEN =
-    "IGQWRQbjNOd2xPSUtVZADhQSUx0X0ZA3R2EyRDdhaTJvOHZALYkxsN3EzY0dPdHlOYmViVjVjVTRCVUpUNVlSSkVuN1lJcGJVQWdYbzFfVl9rcnpsOGRRZAFNxVWZAGMlJCNlJJNUx6X1lXMGhBTlBrLXIzSHNIcWlRVlkZD";
+    "IGQWRPT2VjbVpQV3BiN3NRUm5tTk1JUFlabHdtQ2tUbmhqR21YOTN4Mk93ajVFckt4ZAmRfTTdtcHdoWGM0Um8wNTBqUU1EVFloVlhTcTJmdUFqQ2phakpra3hFaWRFNmlXVU9laHNVWTctTzdlOHJ4MU1ScnMwWGsZD";
 
 const list = [
     {

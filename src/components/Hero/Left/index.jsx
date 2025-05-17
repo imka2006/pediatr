@@ -3,7 +3,7 @@ import Tabs from "./Tabs";
 import Slider from "./Slider";
 
 function Left() {
-  const [selectedTab, setSelectedTab] = useState("");
+  const [selectedTab, setSelectedTab] = useState("Педиатр");
   
   const handleTabClick = (tabName) => {
     setSelectedTab(tabName);
