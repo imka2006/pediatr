@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 
-import Pediatr from "../../../../assets/icon/Left/Tabs/pediatr.webp";
-import ChildNeurologist from "../../../../assets/icon/Left/Tabs/childNeurologist.webp";
-import ChildUrologist from "../../../../assets/icon/Left/Tabs/childUrologist.webp";
-import Neotologist from "../../../../assets/icon/Left/Tabs/neotologist.webp";
+import Pediatr from "../../../../assets/icon/Hero/Left/Tabs/pediatr.webp";
+import ChildNeurologist from "../../../../assets/icon/Hero/Left/Tabs/childNeurologist.webp";
+import ChildUrologist from "../../../../assets/icon/Hero/Left/Tabs/childUrologist.webp";
+import Neotologist from "../../../../assets/icon/Hero/Left/Tabs/neotologist.webp";
 
 import "aos/dist/aos.css";
 import "./style.scss";

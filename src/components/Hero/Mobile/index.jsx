@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 
-import twoGis from "../../../assets/icon/Right/Location/twoGis.svg";
-import googleMap from "../../../assets/icon/Right/Location/googleMap.svg";
-import yandexMap from "../../../assets/icon/Right/Location/yandexMap.svg";
+import twoGis from "../../../assets/icon/Hero/Right/Location/twoGis.svg";
+import googleMap from "../../../assets/icon/Hero/Right/Location/googleMap.svg";
+import yandexMap from "../../../assets/icon/Hero/Right/Location/yandexMap.svg";
 
 import "aos/dist/aos.css";
 

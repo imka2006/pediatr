@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 
-import Parking from "../../../../assets/icon/Right/Location/parking.svg";
-import twoGis from "../../../../assets/icon/Right/Location/twoGis.svg";
-import googleMap from "../../../../assets/icon/Right/Location/googleMap.svg";
-import yandexMap from "../../../../assets/icon/Right/Location/yandexMap.svg";
+import Parking from "../../../../assets/icon/Hero/Right/Location/parking.svg";
+import twoGis from "../../../../assets/icon/Hero/Right/Location/twoGis.svg";
+import googleMap from "../../../../assets/icon/Hero/Right/Location/googleMap.svg";
+import yandexMap from "../../../../assets/icon/Hero/Right/Location/yandexMap.svg";
 
 import "./style.scss";
 import "aos/dist/aos.css";

@@ -4,7 +4,7 @@ import AOS from "aos";
 import Whatsapp from "../../../../assets/icon/Blog/Whatsapp.webp";
 import Bg from "../../../../assets/img/Bg/Top.webp";
 import BgMb from "../../../../assets/img/Bg/MobileTop.webp";
-import Babe from "../../../../assets/img/right/Top/Babe.png";
+import Babe from "../../../../assets/img/Hero/Right/Top/Babe.png";
 
 import "./style.scss";
 import "aos/dist/aos.css";
