@@ -22,9 +22,6 @@ import Blood from "../../assets/icon/Services/Price/Blood.svg";
 
 import "./style.scss";
 
-const TOKEN =
-    "IGQWRPT2VjbVpQV3BiN3NRUm5tTk1JUFlabHdtQ2tUbmhqR21YOTN4Mk93ajVFckt4ZAmRfTTdtcHdoWGM0Um8wNTBqUU1EVFloVlhTcTJmdUFqQ2phakpra3hFaWRFNmlXVU9laHNVWTctTzdlOHJ4MU1ScnMwWGsZD";
-
 const list = [
     {
         id: 0,
@@ -98,6 +95,8 @@ const mobile = [
         price: 150,
     },
 ];
+
+const TOKEN = import.meta.env.VITE_INSTAGRAM_TOKEN;
 
 function Principles() {
     const [instagramPosts, setInstagramPosts] = useState([]);
