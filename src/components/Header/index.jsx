@@ -79,7 +79,6 @@ function Index() {
               <div></div>
               <p className="header-info">
                 <span className={statusClass}>{statusText}</span>
-                19:00 - 9:00
                 {openHoursString !== "выходной" ? openHoursString : ""}
                 <br />
                 ул. Орозбекова 112
