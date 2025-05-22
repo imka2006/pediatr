@@ -14,7 +14,7 @@ function Form({title,setForm}) {
             <div onClick={() => setForm(false)} className="modal-bg"></div>
 
             <div className="modal-wrapper">
-                <form onSubmit="" className="modal-form">
+                <form className="modal-form">
                     <img
                         onClick={() => setForm(false)}
                         src={Close}
