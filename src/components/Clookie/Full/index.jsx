@@ -2,7 +2,11 @@ import React from "react";
 
 import "./style.scss"
 
-function Full() {
+function Full({setLil,setFull}) {
+    const onClose = () => {
+        setFull(false)
+        setLil(false)
+    }
     return (
         <div className="cookie-full">
             <h2 className="cookie-full__title">Условия использования файлов cookie</h2>
@@ -25,7 +29,7 @@ function Full() {
                 pediatr.kg.
             </div>
             <div className="cookie-full__wrapper">
-                <button className="cookie-full__blue">Принять</button>
+                <button className="cookie-full__blue" onClick={() => onClose()}>Принять</button>
             </div>
         </div>
     );

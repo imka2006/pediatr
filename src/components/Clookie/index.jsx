@@ -1,22 +1,24 @@
-import React, { useState } from 'react'
-import Lil from './Lil'
-import Full from './Full'
+import React, { useState } from "react";
+import Lil from "./Lil";
+import Full from "./Full";
 
-import "./style.scss"
+import "./style.scss";
 
 function Cookie() {
-    const [active, seetActive] = useState(true)
-  return (
-    <>
-    {
-        active ? (
-            <Full />
-        ): (
-            <Lil />
-        )
-    }
-    </>
-  )
+    const [lil, setLil] = useState(true);
+    const [full, setFull] = useState(false);
+
+    return (
+        <>
+            {lil && <Lil setLil={setLil} setFull={setFull} />}
+            {full && (
+                <>
+                    <div className="cookie-wrapper" onClick={() =>setFull(false) }></div>
+                    <Full  setLil={setLil} setFull={setFull}/>
+                </>
+            )}
+        </>
+    );
 }
 
-export default Cookie
+export default Cookie;

@@ -66,10 +66,18 @@
         flex-direction: unset;
         margin-top: 0;
 
+        &__item {
+            min-width: 80px;
+            max-width: 80px;
+        }
     }
 
     @media screen and (max-width: 490px) {
-        width: 280px;
+        width: 320px;
         gap: 0px;
+    }
+
+    @media screen and (max-width: 380px) {
+        width: 280px;
     }
 }

@@ -50,7 +50,7 @@ function App() {
       <Reviews />
       {modalOpen && <Modal setModal={setModalOpen} />}
       {isMobile && <Blog />}
-      {/* <Cookie /> */}
+      <Cookie />
     </>
   );
 }

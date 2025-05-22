@@ -2,8 +2,13 @@
     padding: 20px;
     max-width: 351px;
     box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(138, 173, 255, 0.2);
     background: #fff;
     border-radius: 20px;
+    position: fixed;
+    left: 30px;
+    bottom: 100px;
+    z-index: 999;
 
     &__text {
         font-size: 15px;
@@ -31,22 +36,30 @@
         color: #000;
         background: #fff;
         border: 1px solid #fff;
-        transition: .3s;
+        transition: 0.3s;
         &:hover {
-            transition: .3s;
+            transition: 0.3s;
             color: #fff;
-            background: #249DC0;
+            background: #249dc0;
         }
     }
     &__blue {
         color: #fff;
         background: #249dc0;
         border: 1px solid #249dc0;
-        transition: .3s;
+        transition: 0.3s;
         &:hover {
-            transition: .3s;
+            transition: 0.3s;
             color: #1b8bac;
             background: #fff;
         }
+    }
+    @media screen and (max-width: 500px) {
+        left: 50%;
+        bottom: 40px;
+        transform: translate(-50%, 0%);
+    }
+    @media screen and (max-width: 350px) {
+        max-width: 300px;
     }
 }
