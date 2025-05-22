@@ -5,12 +5,18 @@ import Full from "./Full";
 import "./style.scss";
 
 function Cookie() {
-    const [lil, setLil] = useState(true);
+    const [lil, setLil] = useState(() => {
+        const consent = localStorage.getItem("cookieConsent");
+        return !consent; 
+    });
     const [full, setFull] = useState(false);
+
     const onClose = () => {
+        localStorage.setItem("cookieConsent", "false"); 
         setFull(false);
         setLil(false);
     };
+
     return (
         <>
             {lil && <Lil setLil={setLil} setFull={setFull} />}

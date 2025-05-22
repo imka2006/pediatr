@@ -159,7 +159,7 @@ function Principles() {
                 )}
                 {width >= 685 && width < 1115 && instagramPosts[2] && (
                   <Post
-                    img={instagramPosts[2].display_url}
+                    img={instagramPosts[3].display_url}
                     text={instagramPosts[2].caption || "Без описания"}
                     link={instagramPosts[2].permalink}
                   />

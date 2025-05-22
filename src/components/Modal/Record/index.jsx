@@ -12,7 +12,7 @@ import "./style.scss";
 
 function Record({ setModal, setCalendar, finishDate, setFinal }) {
     const [isActive, setIsActive] = useState(
-        localStorage.getItem("specialist") || "Выберите врача"  
+        localStorage.getItem("specialist") || "Выберите врача"
     );
     const [isShow, setShow] = useState(false);
     const [name, setName] = useState(localStorage.getItem("name") || "");
@@ -46,40 +46,39 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
 
     // очистка
     const handleSubmit = (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    if (!name.trim()) {
-        alert("Введите имя");
-        return;
-    }
+        if (!name.trim()) {
+            alert("Введите имя");
+            return;
+        }
 
-    if (!phone || phone.length < 18) {
-        alert("Введите корректный номер телефона ");
-        return;
-    }
+        if (!phone || phone.length < 18) {
+            alert("Введите корректный номер телефона ");
+            return;
+        }
 
-    if (isActive === "Выберите врача") {
-        alert("Выберите врача");
-        return;
-    }
+        if (isActive === "Выберите врача") {
+            alert("Выберите врача");
+            return;
+        }
 
-    if (!finishDate || finishDate.length === 0) {
-        alert("Выберите дату и время");
-        return;
-    }
+        if (!finishDate || finishDate.length === 0) {
+            alert("Выберите дату и время");
+            return;
+        }
 
-    // очищаем данные
-    localStorage.removeItem("name");
-    localStorage.removeItem("phone");
-    localStorage.removeItem("specialist");
-    localStorage.removeItem("finishDate");
+        // очищаем данные
+        localStorage.removeItem("name");
+        localStorage.removeItem("phone");
+        localStorage.removeItem("specialist");
+        localStorage.removeItem("finishDate");
 
-    setName("");
-    setPhone("");
-    setIsActive("Выберите врача");
-    setFinal(true);
-};
-
+        setName("");
+        setPhone("");
+        setIsActive("Выберите врача");
+        setFinal(true);
+    };
 
     const onClick = (item) => {
         setIsActive(item);
@@ -158,15 +157,12 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
             </div>
 
             <div className="modal-record__info">
-                <button className="modal-record__btn">
-                    Отправить
-                </button>
+                <button className="modal-record__btn">Отправить</button>
                 <p className="modal-record__text">
                     Нажимая на кнопку, вы даете согласие на обработку
                     персональных данных
                 </p>
             </div>
-
             <div className="modal-record__call">
                 Записаться по телефону:
                 <a href="tel:+996508766555" className="modal-record__phone">
@@ -175,9 +171,6 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
                 <a href="tel:+996550766555" className="modal-record__phone">
                     0 550 766 555
                 </a>
-            </div>
-
-            <div className="modal-record__bott">
                 <a
                     href="#"
                     className="modal-record__whatsapp"
@@ -186,9 +179,9 @@ function Record({ setModal, setCalendar, finishDate, setFinal }) {
                 >
                     <img src={Whatsapp} alt="Whatsapp" />
                 </a>
-                <img src={Logo} alt="Логотип" />
-                <img src={Bg} alt="" className="modal-record__bg" />
             </div>
+            <img src={Bg} alt="" className="modal-record__bg" />
+            <img src={Logo} className="modal-form__logo" alt="Логотип" />
         </form>
     );
 }

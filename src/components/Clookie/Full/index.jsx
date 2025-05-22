@@ -4,9 +4,11 @@ import "./style.scss"
 
 function Full({setLil,setFull}) {
     const onClose = () => {
-        setFull(false)
-        setLil(false)
-    }
+        localStorage.setItem("cookieConsent", "true"); 
+        setFull(false);
+        setLil(false);
+    };
+
     return (
         <div className="cookie-full">
             <h2 className="cookie-full__title">Условия использования файлов cookie</h2>

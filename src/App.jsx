@@ -13,6 +13,7 @@ import MainBg from "./assets/img/Bg/Main.webp";
 
 import "./App.scss";
 import Cookie from "./components/Clookie";
+import Form from "./components/Form";
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -51,6 +52,7 @@ function App() {
       {modalOpen && <Modal setModal={setModalOpen} />}
       {isMobile && <Blog />}
       <Cookie />
+      {/* <Form /> */}
     </>
   );
 }
