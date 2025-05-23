@@ -12,10 +12,6 @@
         justify-content: space-between;
     }
     @media screen and (max-width: 1115px) {
-        // &-content {
-        //     display: grid;
-        //     grid-template-columns: repeat(auto-fill, minmax(255px, 3fr));
-        // }
         &-wrapper {
             flex-wrap: wrap;
         }
@@ -31,9 +27,4 @@
             grid-template-columns: repeat(auto-fill, minmax(210px, 3fr));
         }
     }
-    // @media screen and (max-width: 480px) {
-    //     &-content {
-    //         grid-template-columns: repeat(auto-fill, minmax(300px, 3fr)); 
-    //     }
-    // }
 }

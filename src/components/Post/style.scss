@@ -84,12 +84,10 @@
         gap: 6px;
         margin-top: auto;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 480px) {
         max-width: unset;
-        &-image {
-            // width: 100%;
-        }
         &-img__wrapper {
+            max-height: 450px;
             height: auto;
         }
     }
