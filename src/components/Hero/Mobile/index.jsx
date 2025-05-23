@@ -89,14 +89,14 @@ function Mobile() {
         ориентир пересекает ул. Фрунзе, напротив СШ №27
       </p>
       <div className="hero-location__content">
-        <button className="hero-location__btn">Открыть карту</button>
-        <a href="#" className="hero-location__link">
+        <a href="#" target="_blank" className="hero-location__btn">Открыть карту</a>
+        <a href="#" target="_blank" className="hero-location__link">
           <img src={twoGis} alt="twoGis" />
         </a>
-        <a href="#" className="hero-location__link">
+        <a href="#" target="_blank" className="hero-location__link">
           <img src={googleMap} alt="googleMap" />
         </a>
-        <a href="#" className="hero-location__link">
+        <a href="#" target="_blank" className="hero-location__link">
           <img src={yandexMap} alt="yandexMap" />
         </a>
       </div>

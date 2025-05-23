@@ -37,14 +37,14 @@ function Location() {
       <p className="hero-location__text">ориентир пересекает ул. Фрунзе, напротив СШ №27</p>
 
       <div className="hero-location__content">
-        <button className="hero-location__btn">Открыть карту</button>
-        <a href="#" className="hero-location__link" aria-label="2GIS">
+        <a href="#" target="_blank" className="hero-location__btn">Открыть карту</a>
+        <a href="#" target="_blank" className="hero-location__link" aria-label="2GIS">
           <img src={twoGis} alt="2GIS" />
         </a>
-        <a href="#" className="hero-location__link" aria-label="Google Maps">
+        <a href="#" target="_blank" className="hero-location__link" aria-label="Google Maps">
           <img src={googleMap} alt="Google Maps" />
         </a>
-        <a href="#" className="hero-location__link" aria-label="Yandex Maps">
+        <a href="#" target="_blank" className="hero-location__link" aria-label="Yandex Maps">
           <img src={yandexMap} alt="Yandex Maps" />
         </a>
       </div>

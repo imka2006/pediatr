@@ -1,13 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import "./style.scss";
 import LilStar from "../../../assets/icon/Reviews/LilStar.svg";
 import Arrow from "../../../assets/icon/Reviews/Arrow.svg";
 
-import "./style.scss";
-
 function Cart({ item, wid }) {
   const [showFullText, setShowFullText] = useState(false);
-  const [displayText, setDisplayText] = useState(item.text);
-  const textRef = useRef(null);
+  const [displayText, setDisplayText] = useState("");
 
   const formatDate = (dateString) =>
     new Date(dateString).toLocaleDateString("ru-RU", {
@@ -16,34 +14,21 @@ function Cart({ item, wid }) {
       year: "numeric",
     });
 
-  const isLongText = item.text.split(" ").length > 5;
-
   useEffect(() => {
-    if (showFullText || !isLongText) {
+    const words = item.text.split(" ");
+    const isLong = words.length > 20;
+
+    if (showFullText || !isLong) {
       setDisplayText(item.text);
-      return;
+    } else {
+      setDisplayText(words.slice(0, 20).join(" ") + "...");
     }
+  }, [showFullText, item.text]);
 
-    const element = textRef.current;
-    const originalText = item.text;
-    let truncatedText = originalText;
-    element.textContent = truncatedText;
-
-    // Усечение текста, если высота больше 80px
-    while (element.scrollHeight > 80 && truncatedText.length > 0) {
-      truncatedText = truncatedText.slice(0, -1);
-      element.textContent = truncatedText + "...";
-    }
-
-    setDisplayText(truncatedText + "...");
-  }, [showFullText, item.text, isLongText]);
+  const isLongText = item.text.split(" ").length > 20;
 
   return (
-    <div
-      className={`reviews-block ${wid}`}
-      data-aos="fade-up"
-      data-aos-duration="600"
-    >
+    <div className={`reviews-block ${wid}`} data-aos="fade-up" data-aos-duration="600">
       <h4 className="reviews-block__name">{item.user_name}</h4>
       <div className="reviews-block__star">
         {Array(item.rating)
@@ -53,22 +38,9 @@ function Cart({ item, wid }) {
           ))}
       </div>
       <div className="reviews-block__date">{formatDate(item.date_created)}</div>
-      <div
-        className="reviews-block__text"
-        ref={textRef}
-        style={{
-          maxHeight: showFullText ? "none" : "80px",
-          overflow: "hidden",
-        }}
-      >
-        {displayText}
-      </div>
+      <div className="reviews-block__text">{displayText}</div>
       {isLongText && !showFullText && (
-        <button
-          className="reviews-block__link"
-          onClick={() => setShowFullText(true)}
-          type="button"
-        >
+        <button className="reviews-block__link" onClick={() => setShowFullText(true)}>
           Читать полностью <img src={Arrow} alt="arrow" />
         </button>
       )}
