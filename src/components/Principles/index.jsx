@@ -97,89 +97,121 @@ const mobile = [
 ];
 
 function Principles() {
-  const [instagramPosts, setInstagramPosts] = useState([]);
-  const [width, setWidth] = useState(window.innerWidth);
+    const [instagramPosts, setInstagramPosts] = useState([]);
+    const [width, setWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const fetchInstagramPosts = async () => {
-      try {
-        const response = await axios.get("https://nexus.kg/webhook/get_insta");
-        const rawPosts = response.data?.[0]?.data;
+    useEffect(() => {
+        const fetchInstagramPosts = async () => {
+            try {
+                const response = await axios.get(
+                    "https://nexus.kg/webhook/get_insta"
+                );
+                const rawPosts = response.data?.[0]?.data;
 
-        if (!Array.isArray(rawPosts)) {
-          console.error("Instagram data format invalid");
-          return;
-        }
+                if (!Array.isArray(rawPosts)) {
+                    console.error("Instagram data format invalid");
+                    return;
+                }
 
-        const processedPosts = rawPosts.map((post) => {
-          const display_url = post.thumbnail_url || post.media_url;
-          const like_count = post.like_count || 0;
+                const processedPosts = rawPosts.map((post) => {
+                    const display_url = post.thumbnail_url || post.media_url;
+                    const like_count = post.like_count || 0;
+                    const comments_count = post.comments_count || 0;
 
-          return {
-            ...post,
-            display_url,
-            like_count,
-          };
-        });
+                    return {
+                        ...post,
+                        display_url,
+                        like_count,
+                        comments_count,
+                    };
+                });
 
-        setInstagramPosts(processedPosts);
-      } catch (error) {
-        console.error("Ошибка загрузки Instagram:", error);
-      }
-    };
+                setInstagramPosts(processedPosts);
+            } catch (error) {
+                console.error("Ошибка загрузки Instagram:", error);
+            }
+        };
 
-    fetchInstagramPosts();
+        fetchInstagramPosts();
 
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
-  return (
-    <section className="principles">
-      <div className="container">
-        <div className="principles-wrapper">
-          <div className="principles-content">
-            {instagramPosts.length > 0 && (
-              <>
-                {instagramPosts[0] && (
-                  <Post
-                    img={instagramPosts[0].display_url}
-                    text={instagramPosts[0].caption || "Без описания"}
-                    link={instagramPosts[0].permalink}
-                    likes={instagramPosts[0].like_count}
-                  />
-                )}
-                {instagramPosts[1] && (
-                  <Post
-                    img={instagramPosts[1].display_url}
-                    text={instagramPosts[1].caption || "Без описания"}
-                    link={instagramPosts[1].permalink}
-                    likes={instagramPosts[1].like_count}
-                  />
-                )}
-                {width >= 685 && width < 1115 && instagramPosts[2] && (
-                  <Post
-                    img={instagramPosts[2].display_url}
-                    text={instagramPosts[2].caption || "Без описания"}
-                    link={instagramPosts[2].permalink}
-                    likes={instagramPosts[2].like_count}
-                  />
-                )}
-              </>
-            )}
-          </div>
+    return (
+        <section className="principles">
+            <div className="container">
+                <div className="principles-wrapper">
+                    <div className="principles-content">
+                        {instagramPosts.length > 0 && (
+                            <>
+                                {instagramPosts[0] && (
+                                    <Post
+                                        img={instagramPosts[0].display_url}
+                                        text={
+                                            instagramPosts[0].caption ||
+                                            "Без описания"
+                                        }
+                                        link={instagramPosts[0].permalink}
+                                        likes={instagramPosts[0].like_count || ""}
+                                        comments={
+                                            instagramPosts[0].comments_count || ""
+                                        }
+                                    />
+                                )}
+                                {instagramPosts[1] && (
+                                    <Post
+                                        img={instagramPosts[1].display_url}
+                                        text={
+                                            instagramPosts[1].caption ||
+                                            "Без описания"
+                                        }
+                                        link={instagramPosts[1].permalink}
+                                        likes={instagramPosts[1].like_count || ""}
+                                        comments={
+                                            instagramPosts[1].comments_count || ""
+                                        }
+                                    />
+                                )}
+                                {width >= 685 &&
+                                    width < 1115 &&
+                                    instagramPosts[2] && (
+                                        <Post
+                                            img={instagramPosts[2].display_url}
+                                            text={
+                                                instagramPosts[2].caption ||
+                                                "Без описания"
+                                            }
+                                            link={instagramPosts[2].permalink}
+                                            likes={instagramPosts[2].like_count || ""}
+                                            comments={
+                                                instagramPosts[2].comments_count || ""
+                                            }
+                                        />
+                                    )}
+                            </>
+                        )}
+                    </div>
 
-          {width < 700 && (
-            <List items={mobile} position={true} title="Стоимость услуг" />
-          )}
+                    {width < 700 && (
+                        <List
+                            items={mobile}
+                            position={true}
+                            title="Стоимость услуг"
+                        />
+                    )}
 
-          <List items={list} position={false} title="Основные принципы работы" />
-        </div>
-      </div>
-    </section>
-  );
+                    <List
+                        items={list}
+                        position={false}
+                        title="Основные принципы работы"
+                    />
+                </div>
+            </div>
+        </section>
+    );
 }
 
 export default Principles;
