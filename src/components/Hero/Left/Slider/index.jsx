@@ -9,7 +9,7 @@ import Alina from "../../../../assets/img/Hero/left/Slider/Alina.webp";
 import Adinai from "../../../../assets/img/Hero/left/Slider/Adinai.webp";
 import Bekmamat from "../../../../assets/img/Hero/left/Slider/Bekmamat.webp";
 import Isulu from "../../../../assets/img/Hero/left/Slider/Isulu.webp";
-import ww from "../../../../assets/img/Hero/left/Slider/Aidnai.jpg";
+import Aidnai from "../../../../assets/img/Hero/left/Slider/Aidnai.webp";
 
 import Datkaym from "../../../../assets/img/Hero/left/Slider/Datkaym.webp";
 
@@ -32,7 +32,7 @@ const doctorsData = {
     Педиатр: [
         {
             id: 99,
-            img: ww,
+            img: Aidnai,
             name: "Аббасова Айгерим Аббасовна",
             exp: "5 лет+",
             link: "https://www.instagram.com/kendricklamar/",
