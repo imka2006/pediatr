@@ -112,13 +112,13 @@ function Principles() {
         }
 
         const processedPosts = rawPosts.map((post) => {
-          // Если есть thumbnail_url — считаем это видео и берем превью
-          // Иначе берем media_url (фото)
           const display_url = post.thumbnail_url || post.media_url;
+          const like_count = post.like_count || 0;
 
           return {
             ...post,
             display_url,
+            like_count,
           };
         });
 
@@ -148,6 +148,7 @@ function Principles() {
                     img={instagramPosts[0].display_url}
                     text={instagramPosts[0].caption || "Без описания"}
                     link={instagramPosts[0].permalink}
+                    likes={instagramPosts[0].like_count}
                   />
                 )}
                 {instagramPosts[1] && (
@@ -155,6 +156,7 @@ function Principles() {
                     img={instagramPosts[1].display_url}
                     text={instagramPosts[1].caption || "Без описания"}
                     link={instagramPosts[1].permalink}
+                    likes={instagramPosts[1].like_count}
                   />
                 )}
                 {width >= 685 && width < 1115 && instagramPosts[2] && (
@@ -162,12 +164,14 @@ function Principles() {
                     img={instagramPosts[2].display_url}
                     text={instagramPosts[2].caption || "Без описания"}
                     link={instagramPosts[2].permalink}
+                    likes={instagramPosts[2].like_count}
                   />
                 )}
               </>
             )}
           </div>
-             {width < 700 && (
+
+          {width < 700 && (
             <List items={mobile} position={true} title="Стоимость услуг" />
           )}
 

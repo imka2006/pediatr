@@ -64,6 +64,15 @@
         align-items: center;
         gap: 12px;
         margin: 8px 0 4px;
+        
+        div {
+            height: 24px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+            font-weight: 800;
+        }
     }
     &-tag {
         font-weight: 700;

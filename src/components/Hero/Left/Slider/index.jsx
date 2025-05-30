@@ -9,6 +9,7 @@ import Alina from "../../../../assets/img/Hero/left/Slider/Alina.webp";
 import Adinai from "../../../../assets/img/Hero/left/Slider/Adinai.webp";
 import Bekmamat from "../../../../assets/img/Hero/left/Slider/Bekmamat.webp";
 import Isulu from "../../../../assets/img/Hero/left/Slider/Isulu.webp";
+import ww from "../../../../assets/img/Hero/left/Slider/Aidnai.jpg";
 
 import Datkaym from "../../../../assets/img/Hero/left/Slider/Datkaym.webp";
 
@@ -29,6 +30,15 @@ import "./style.scss";
 
 const doctorsData = {
     Педиатр: [
+        {
+            id: 99,
+            img: ww,
+            name: "Аббасова Айгерим Аббасовна",
+            exp: "5 лет+",
+            link: "https://www.instagram.com/kendricklamar/",
+            price: "950",
+            text: "Моя работа — это не просто лечение, но и установление доверительных отношений с пациентами.",
+        },
         {
             id: 0,
             img: Aygerim,
@@ -184,7 +194,7 @@ function Slider({ selectedTab }) {
                                                 className="hero-swiper__inst"
                                             >
                                                 <img src={Inst} alt="inst" />
-                                                {selectedTab}{" "}
+                                                {selectedTab}
                                                 {category
                                                     ? ` / ${category.replace(
                                                           /^\/\s*/,

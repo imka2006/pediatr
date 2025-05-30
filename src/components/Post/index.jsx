@@ -12,7 +12,7 @@ import Dots from "../../assets/icon/Principles/Post/Dots.svg";
 
 import "./style.scss";
 
-function Post({ img, text, link }) {
+function Post({ img, text, link, likes }) {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -36,9 +36,9 @@ function Post({ img, text, link }) {
       </div>
       <div className="post-btn">
         <div className="post-inner">
-          <img src={Like} alt="Like" />
-          <img src={Commit} alt="Commit" />
-          <img src={Share} alt="Share" />
+          <div><img src={Like} alt="Like" /> {likes}</div>
+          <div><img src={Commit} alt="Commit" /></div>
+         <div> <img src={Share} alt="Share" /></div>
         </div>
         <img src={Save} alt="Save" />
       </div>
